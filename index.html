@@ -67,7 +67,6 @@
         
         .whatsapp-float:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(37,211,102,0.5);
         }
         
         .whatsapp-float i {
@@ -75,12 +74,46 @@
             color: white;
         }
 
-        /* Custom Scrollbar */
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            background: var(--accent-dark);
+        }
+        
+        .scroll-top i {
+            color: white;
+            font-size: 1.2rem;
+        }
+
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--gray); }
         ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
 
-        /* Navigation - Fixed with solid background */
+        /* Navigation */
         .navbar {
             position: fixed;
             top: 0;
@@ -161,7 +194,7 @@
             color: white;
         }
 
-        /* Hero Slider - Professional & Modern */
+        /* Hero Slider */
         .hero-slider {
             height: 100vh;
             width: 100%;
@@ -238,7 +271,6 @@
             font-size: 1.2rem;
             margin-bottom: 2rem;
             max-width: 700px;
-            opacity: 0.95;
         }
         
         .swiper-button-next, .swiper-button-prev {
@@ -254,10 +286,6 @@
             background: var(--accent);
         }
         
-        .swiper-button-next:after, .swiper-button-prev:after {
-            font-size: 1.2rem;
-        }
-        
         .swiper-pagination-bullet {
             background: white;
             opacity: 0.5;
@@ -268,7 +296,6 @@
             opacity: 1;
         }
 
-        /* Stats on first slide */
         .stats-grid {
             display: flex;
             justify-content: center;
@@ -305,11 +332,6 @@
             margin-top: 1rem;
         }
         
-        .whatsapp-btn-slide:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(37,211,102,0.4);
-        }
-        
         .btn-slide {
             display: inline-flex;
             align-items: center;
@@ -322,11 +344,6 @@
             font-weight: 600;
             transition: all 0.3s;
             margin-top: 1rem;
-        }
-        
-        .btn-slide:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         /* Sections */
@@ -354,7 +371,6 @@
             margin: 0 auto 3rem;
         }
         
-        /* Service Cards */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -392,7 +408,6 @@
             color: var(--accent);
         }
         
-        /* Coverage Banner */
         .coverage-banner {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 20px;
@@ -417,7 +432,6 @@
             font-size: 0.9rem;
         }
         
-        /* Gallery */
         .gallery {
             background: var(--gray);
         }
@@ -440,7 +454,6 @@
             object-fit: cover;
         }
         
-        /* CTA Section */
         .cta-section {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
@@ -475,7 +488,6 @@
             transition: all 0.3s;
         }
         
-        /* Footer */
         .footer {
             background: var(--primary-dark);
             color: white;
@@ -542,41 +554,6 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
         
-        /* Scroll to Top */
-        .scroll-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 99;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .scroll-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .scroll-top:hover {
-            transform: translateY(-5px);
-            background: var(--accent-dark);
-        }
-        
-        .scroll-top i {
-            color: white;
-            font-size: 1.2rem;
-        }
-        
         /* Responsive */
         @media (max-width: 768px) {
             .menu-toggle {
@@ -588,9 +565,19 @@
                 flex-direction: column;
                 text-align: center;
                 padding: 1rem 0;
+                background: var(--primary);
             }
             .nav-menu.active {
                 display: flex;
+            }
+            .nav-menu a {
+                display: inline-block;
+                padding: 0.5rem 0;
+            }
+            .nav-btn {
+                display: inline-block;
+                width: auto;
+                margin: 0 auto;
             }
             .slide-content h1 {
                 font-size: 2rem;
@@ -615,13 +602,21 @@
                 height: 50px;
                 bottom: 20px;
                 left: 20px;
-			}
-			.scroll-top {
-                bottom: 20px;
-                right: 20px;
             }
             .whatsapp-float i {
                 font-size: 1.5rem;
+            }
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+            .hero-slider {
+                height: 100vh;
+            }
+            .gallery .swiper-slide img {
+                height: 200px;
             }
         }
     </style>
@@ -658,11 +653,10 @@
         </div>
     </nav>
 
-    <!-- Hero Slider - Using all 12 images -->
+    <!-- Hero Slider - All 12 images -->
     <section id="home" class="hero-slider">
         <div class="swiper hero-swiper">
             <div class="swiper-wrapper">
-                <!-- Slide 1 -->
                 <div class="swiper-slide">
                     <div class="slide-bg" style="background-image: url('assets/images/slide-1.jpg');"></div>
                     <div class="slide-overlay"></div>
@@ -679,7 +673,6 @@
                     </div>
                 </div>
                 
-                <!-- Slide 2 -->
                 <div class="swiper-slide">
                     <div class="slide-bg" style="background-image: url('assets/images/slide-2.jpg');"></div>
                     <div class="slide-overlay"></div>
@@ -691,7 +684,6 @@
                     </div>
                 </div>
                 
-                <!-- Slide 3 -->
                 <div class="swiper-slide">
                     <div class="slide-bg" style="background-image: url('assets/images/slide-3.jpg');"></div>
                     <div class="slide-overlay"></div>
@@ -703,7 +695,6 @@
                     </div>
                 </div>
                 
-                <!-- Slide 4 -->
                 <div class="swiper-slide">
                     <div class="slide-bg" style="background-image: url('assets/images/slide-4.jpg');"></div>
                     <div class="slide-overlay"></div>
@@ -715,7 +706,6 @@
                     </div>
                 </div>
                 
-                <!-- Slide 5 -->
                 <div class="swiper-slide">
                     <div class="slide-bg" style="background-image: url('assets/images/slide-5.jpg');"></div>
                     <div class="slide-overlay"></div>
@@ -727,7 +717,6 @@
                     </div>
                 </div>
                 
-                <!-- Slide 6 -->
                 <div class="swiper-slide">
                     <div class="slide-bg" style="background-image: url('assets/images/slide-6.jpg');"></div>
                     <div class="slide-overlay"></div>
@@ -739,7 +728,6 @@
                     </div>
                 </div>
                 
-                <!-- Slide 7 -->
                 <div class="swiper-slide">
                     <div class="slide-bg" style="background-image: url('assets/images/slide-7.jpg');"></div>
                     <div class="slide-overlay"></div>
@@ -751,7 +739,6 @@
                     </div>
                 </div>
                 
-                <!-- Slide 8 -->
                 <div class="swiper-slide">
                     <div class="slide-bg" style="background-image: url('assets/images/slide-8.jpg');"></div>
                     <div class="slide-overlay"></div>
@@ -763,7 +750,6 @@
                     </div>
                 </div>
                 
-                <!-- Slide 9 -->
                 <div class="swiper-slide">
                     <div class="slide-bg" style="background-image: url('assets/images/slide-9.jpg');"></div>
                     <div class="slide-overlay"></div>
@@ -775,7 +761,6 @@
                     </div>
                 </div>
                 
-                <!-- Slide 10 -->
                 <div class="swiper-slide">
                     <div class="slide-bg" style="background-image: url('assets/images/slide-10.jpg');"></div>
                     <div class="slide-overlay"></div>
@@ -787,7 +772,6 @@
                     </div>
                 </div>
                 
-                <!-- Slide 11 -->
                 <div class="swiper-slide">
                     <div class="slide-bg" style="background-image: url('assets/images/slide-11.jpg');"></div>
                     <div class="slide-overlay"></div>
@@ -799,7 +783,6 @@
                     </div>
                 </div>
                 
-                <!-- Slide 12 -->
                 <div class="swiper-slide">
                     <div class="slide-bg" style="background-image: url('assets/images/slide-12.jpg');"></div>
                     <div class="slide-overlay"></div>
@@ -822,7 +805,6 @@
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Premium Services</h2>
             <p class="section-subtitle" data-aos="fade-up">Everything you need to succeed in your aviation career</p>
-            
             <div class="services-grid">
                 <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-icon"><i class="fas fa-database"></i></div>
@@ -881,7 +863,6 @@
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Our Gallery</h2>
             <p class="section-subtitle" data-aos="fade-up">Explore our world of aviation</p>
-            
             <div class="swiper gallery-swiper" data-aos="fade-up">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide"><img src="assets/images/slide-1.jpg" alt="Aviation"></div>
@@ -967,7 +948,7 @@
     <script>
         AOS.init({ duration: 800, once: true, offset: 100 });
 
-        // Hero Slider - Professional configuration
+        // Hero Slider - با قابلیت سوایپ لمسی
         const heroSwiper = new Swiper('.hero-swiper', {
             loop: true,
             autoplay: {
@@ -976,6 +957,10 @@
             },
             speed: 800,
             effect: 'slide',
+            touchRatio: 1,
+            touchAngle: 45,
+            simulateTouch: true,
+            grabCursor: true,
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
@@ -986,7 +971,7 @@
             },
         });
 
-        // Gallery Swiper
+        // Gallery Swiper - با قابلیت سوایپ لمسی
         new Swiper('.gallery-swiper', {
             slidesPerView: 1,
             spaceBetween: 20,
@@ -996,6 +981,10 @@
                 disableOnInteraction: false,
             },
             speed: 600,
+            touchRatio: 1,
+            touchAngle: 45,
+            simulateTouch: true,
+            grabCursor: true,
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
@@ -1013,9 +1002,29 @@
         // Mobile menu toggle
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
+        
         if (menuToggle) {
-            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navMenu.classList.toggle('active');
+            });
         }
+
+        // بسته شدن منو بعد از کلیک روی هر لینک
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // بسته شدن منو با کلیک بیرون
+        document.addEventListener('click', (e) => {
+            if (navMenu && navMenu.classList.contains('active')) {
+                if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                }
+            }
+        });
 
         // Scroll to top button
         window.addEventListener('scroll', () => {
@@ -1029,13 +1038,6 @@
 
         document.getElementById('scrollTop').addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Close mobile menu on link click
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
         });
     </script>
 </body>
