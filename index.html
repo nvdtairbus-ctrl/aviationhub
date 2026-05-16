@@ -5,14 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>AviationHub | World-Class Aviation Training & EASA Part-66 Resources</title>
     <meta name="description" content="Premium EASA Part-66 question banks, aircraft maintenance manuals (CMM), and aviation training resources for all aircraft types.">
+    <meta name="keywords" content="aviation training, EASA Part-66, aircraft maintenance, Boeing, Airbus, CMM">
+    <meta name="author" content="AviationHub">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='15' y='25' width='70' height='50' rx='8' fill='%23ffd700'/%3E%3Ctext x='38' y='65' font-family='Arial' font-size='42' font-weight='800' fill='%230a2e5c' text-anchor='middle'%3EA%3C/text%3E%3Ctext x='64' y='65' font-family='Arial' font-size='42' font-weight='800' fill='%230a2e5c' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
     
-    <!-- Stylesheets -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
+    <!-- Swiper.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         * {
@@ -24,21 +31,18 @@
         :root {
             --primary: #0a2e5c;
             --primary-dark: #051a36;
-            --accent: #ffd700;
-            --accent-dark: #ffb347;
-            --text-light: #ffffff;
-            --text-dark: #1a1a2e;
-            --gray-light: #f8f9fa;
-            --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
-            --shadow-md: 0 5px 20px rgba(0,0,0,0.08);
-            --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
+            --primary-light: #1a4a8a;
+            --accent: #00bcd4;
+            --accent-dark: #0097a7;
+            --white: #ffffff;
+            --gray: #f5f7fa;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-            background: #ffffff;
+            color: #1a1a2e;
+            background: var(--white);
             overflow-x: hidden;
         }
 
@@ -46,7 +50,7 @@
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
-            left: 30px;
+            right: 30px;
             width: 60px;
             height: 60px;
             background: #25D366;
@@ -58,16 +62,12 @@
             box-shadow: 0 4px 15px rgba(37,211,102,0.4);
             transition: all 0.3s;
             text-decoration: none;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            cursor: pointer;
         }
         
         .whatsapp-float:hover {
             transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37,211,102,0.5);
         }
         
         .whatsapp-float i {
@@ -75,26 +75,20 @@
             color: white;
         }
 
-        /* Scrollbar */
+        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #e0e0e0; }
+        ::-webkit-scrollbar-track { background: var(--gray); }
         ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
 
-        /* Navigation */
+        /* Navigation - Fixed with solid background */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
             padding: 1rem 2rem;
             z-index: 1000;
-            transition: all 0.3s ease;
-            background: transparent;
-        }
-        
-        .navbar.scrolled {
-            background: var(--primary-dark);
-            padding: 0.7rem 2rem;
-            box-shadow: var(--shadow-lg);
+            background: var(--primary);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
         
         .nav-container {
@@ -109,7 +103,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            text-decoration: none;
         }
         
         .logo-icon {
@@ -128,7 +121,7 @@
         .logo-text {
             font-size: 1.5rem;
             font-weight: 800;
-            color: var(--text-light);
+            color: white;
             letter-spacing: -1px;
         }
         
@@ -143,27 +136,14 @@
         }
         
         .nav-menu a {
-            color: var(--accent);
+            color: white;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            position: relative;
+            font-weight: 500;
+            transition: color 0.3s;
         }
         
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s;
-        }
-        
-        .nav-menu a:hover::after,
-        .nav-menu a.active::after {
-            width: 100%;
+        .nav-menu a:hover {
+            color: var(--accent);
         }
         
         .nav-btn {
@@ -171,28 +151,33 @@
             padding: 0.5rem 1.2rem;
             border-radius: 50px;
             color: var(--primary) !important;
-            font-weight: 700 !important;
+            font-weight: 600 !important;
         }
-        
-        .nav-btn::after { display: none; }
         
         .menu-toggle {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
-            color: var(--accent);
+            color: white;
         }
 
-        /* Hero Slider */
+        /* Hero Slider - Professional & Modern */
         .hero-slider {
             height: 100vh;
             width: 100%;
+            margin-top: 0;
             position: relative;
             overflow: hidden;
         }
         
-        .swiper-slide {
+        .hero-slider .swiper {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .hero-slider .swiper-slide {
             position: relative;
+            overflow: hidden;
         }
         
         .slide-bg {
@@ -212,7 +197,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(10,46,92,0.7) 0%, rgba(5,26,54,0.8) 100%);
+            background: linear-gradient(135deg, rgba(10,46,92,0.7) 0%, rgba(0,0,0,0.5) 100%);
         }
         
         .slide-content {
@@ -224,20 +209,17 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--text-light);
+            color: white;
             padding: 0 2rem;
         }
         
         .slide-badge {
             display: inline-block;
-            background: rgba(255,215,0,0.15);
-            backdrop-filter: blur(10px);
+            background: rgba(0,188,212,0.9);
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
             font-size: 0.85rem;
             margin-bottom: 2rem;
-            border: 1px solid var(--accent);
-            color: var(--accent);
             font-weight: 600;
         }
         
@@ -260,7 +242,7 @@
         }
         
         .swiper-button-next, .swiper-button-prev {
-            color: var(--accent);
+            color: white;
             background: rgba(0,0,0,0.3);
             width: 50px;
             height: 50px;
@@ -270,12 +252,10 @@
         
         .swiper-button-next:hover, .swiper-button-prev:hover {
             background: var(--accent);
-            color: var(--primary);
         }
         
         .swiper-button-next:after, .swiper-button-prev:after {
             font-size: 1.2rem;
-            font-weight: bold;
         }
         
         .swiper-pagination-bullet {
@@ -288,21 +268,21 @@
             opacity: 1;
         }
 
+        /* Stats on first slide */
         .stats-grid {
             display: flex;
             justify-content: center;
             gap: 3rem;
-            margin: 2rem 0;
+            margin: 1rem 0;
             flex-wrap: wrap;
         }
         
         .stat-item {
             text-align: center;
-            background: rgba(0,0,0,0.3);
+            background: rgba(255,255,255,0.15);
             backdrop-filter: blur(10px);
             padding: 1rem 2rem;
             border-radius: 20px;
-            border: 1px solid var(--accent);
         }
         
         .stat-number {
@@ -311,7 +291,7 @@
             color: var(--accent);
         }
         
-        .whatsapp-btn {
+        .whatsapp-btn-slide {
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -325,18 +305,43 @@
             margin-top: 1rem;
         }
         
-        .whatsapp-btn:hover {
+        .whatsapp-btn-slide:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(37,211,102,0.4);
         }
+        
+        .btn-slide {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .btn-slide:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
 
         /* Sections */
-        section { padding: 6rem 2rem; }
-        .container { max-width: 1400px; margin: 0 auto; }
+        section {
+            padding: 5rem 2rem;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
         
         .section-title {
             text-align: center;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
             color: var(--primary);
@@ -357,25 +362,24 @@
         }
         
         .service-card {
-            background: var(--text-light);
+            background: var(--white);
             border-radius: 20px;
             padding: 2rem;
             text-align: center;
             transition: all 0.4s;
             border: 1px solid #e9ecef;
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
         
         .service-icon {
             width: 80px;
             height: 80px;
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -383,16 +387,19 @@
             margin: 0 auto 1.5rem;
         }
         
-        .service-icon i { font-size: 2rem; color: var(--accent); }
+        .service-icon i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
         
         /* Coverage Banner */
         .coverage-banner {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 20px;
             padding: 3rem;
             text-align: center;
             color: white;
-            margin: 3rem 0;
+            margin: 2rem 0;
         }
         
         .aircraft-tags {
@@ -410,79 +417,10 @@
             font-size: 0.9rem;
         }
         
-        /* Aircraft Grid */
-        .aircraft-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-        
-        .aircraft-card {
-            background: var(--text-light);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: all 0.4s;
-        }
-        
-        .aircraft-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .aircraft-image {
-            height: 250px;
-            overflow: hidden;
-        }
-        
-        .aircraft-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .aircraft-card:hover .aircraft-image img { transform: scale(1.1); }
-        
-        .aircraft-info { padding: 1.8rem; }
-        
-        .badge-example {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--primary);
-            font-size: 0.7rem;
-            padding: 0.2rem 0.6rem;
-            border-radius: 50px;
-            margin-top: 0.5rem;
-            font-weight: 600;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 0.8rem 1.8rem;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
         /* Gallery */
-        .gallery { background: var(--gray-light); }
+        .gallery {
+            background: var(--gray);
+        }
         
         .gallery .swiper {
             width: 100%;
@@ -490,9 +428,10 @@
         }
         
         .gallery .swiper-slide {
+            text-align: center;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
         .gallery .swiper-slide img {
@@ -501,36 +440,9 @@
             object-fit: cover;
         }
         
-        /* Testimonials */
-        .testimonials { background: linear-gradient(135deg, var(--gray-light), #e0e0e0); }
-        
-        .testimonial-card {
-            background: var(--text-light);
-            border-radius: 30px;
-            padding: 2.5rem;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .testimonial-avatar {
-            width: 80px;
-            height: 80px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-        }
-        
-        .testimonial-avatar i { font-size: 2.5rem; color: var(--accent); }
-        .stars { color: var(--accent); margin-bottom: 1rem; }
-        
-        /* CTA */
+        /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
             text-align: center;
         }
@@ -543,8 +455,25 @@
             flex-wrap: wrap;
         }
         
-        .btn-whatsapp { background: #25D366; }
-        .btn-white { background: white; color: var(--primary); }
+        .btn-whatsapp {
+            background: #25D366;
+        }
+        
+        .btn-white {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
         
         /* Footer */
         .footer {
@@ -561,11 +490,28 @@
             margin: 0 auto;
         }
         
-        .footer-col h4 { margin-bottom: 1rem; color: var(--accent); }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 0.5rem; }
-        .footer-col a { color: white; text-decoration: none; opacity: 0.8; transition: opacity 0.3s; }
-        .footer-col a:hover { opacity: 1; }
+        .footer-col h4 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-col a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+        
+        .footer-col a:hover {
+            opacity: 1;
+        }
         
         .social-links {
             display: flex;
@@ -589,8 +535,6 @@
             transform: translateY(-3px);
         }
         
-        .social-links a:hover i { color: var(--primary); }
-        
         .footer-bottom {
             text-align: center;
             padding-top: 3rem;
@@ -598,11 +542,11 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
         
-        /* Scroll Top */
+        /* Scroll to Top */
         .scroll-top {
             position: fixed;
             bottom: 30px;
-            right: 30px;
+            left: 30px;
             width: 50px;
             height: 50px;
             background: var(--accent);
@@ -615,6 +559,7 @@
             visibility: hidden;
             transition: all 0.3s;
             z-index: 99;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .scroll-top.show {
@@ -627,49 +572,64 @@
             background: var(--accent-dark);
         }
         
-        .scroll-top i { color: var(--primary); font-size: 1.2rem; font-weight: bold; }
+        .scroll-top i {
+            color: white;
+            font-size: 1.2rem;
+        }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .menu-toggle { display: block; }
+            .menu-toggle {
+                display: block;
+            }
             .nav-menu {
                 display: none;
                 width: 100%;
                 flex-direction: column;
                 text-align: center;
                 padding: 1rem 0;
-                background: var(--primary-dark);
             }
-            .nav-menu.active { display: flex; }
-            
-            .slide-content h1 { font-size: 2rem; }
-            .section-title { font-size: 2rem; }
-            .stats-grid { gap: 1rem; }
-            .stat-item { padding: 0.5rem 1rem; }
-            .stat-number { font-size: 1.5rem; }
-            section { padding: 3rem 1rem; }
-            
+            .nav-menu.active {
+                display: flex;
+            }
+            .slide-content h1 {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .stats-grid {
+                gap: 1rem;
+            }
+            .stat-item {
+                padding: 0.5rem 1rem;
+            }
+            .stat-number {
+                font-size: 1.5rem;
+            }
+            section {
+                padding: 3rem 1rem;
+            }
             .whatsapp-float {
                 width: 50px;
                 height: 50px;
                 bottom: 20px;
-                left: 20px;
+                right: 20px;
             }
-            .whatsapp-float i { font-size: 1.5rem; }
+            .whatsapp-float i {
+                font-size: 1.5rem;
+            }
         }
-        
-        /* Loading Optimization */
-        img { content-visibility: auto; }
     </style>
 </head>
 <body>
 
-    <!-- Floating WhatsApp -->
+    <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Scroll Top -->
+    <!-- Scroll to Top -->
     <div class="scroll-top" id="scrollTop">
         <i class="fas fa-chevron-up"></i>
     </div>
@@ -677,25 +637,24 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#home" class="logo">
+            <div class="logo">
                 <div class="logo-icon">AH</div>
-                <div class="logo-text">AVIATION<span>HUB</span></div>
-            </a>
+                <span class="logo-text">AVIATION<span>HUB</span></span>
+            </div>
             <div class="menu-toggle" id="menu-toggle">
                 <i class="fas fa-bars"></i>
             </div>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="#home" class="active">HOME</a></li>
+                <li><a href="#home">HOME</a></li>
                 <li><a href="#services">SERVICES</a></li>
-                <li><a href="#aircraft">AIRCRAFT</a></li>
+                <li><a href="#coverage">COVERAGE</a></li>
                 <li><a href="#gallery">GALLERY</a></li>
-                <li><a href="#testimonials">REVIEWS</a></li>
-                <li><a href="samples.html" class="nav-btn">📋 FREE SAMPLES</a></li>
+                <li><a href="samples.html" class="nav-btn">📋 SAMPLES</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Slider -->
+    <!-- Hero Slider - Using all 12 images -->
     <section id="home" class="hero-slider">
         <div class="swiper hero-swiper">
             <div class="swiper-wrapper">
@@ -712,9 +671,10 @@
                             <div class="stat-item"><div class="stat-number">All Types</div><div>Aircraft</div></div>
                             <div class="stat-item"><div class="stat-number">100%</div><div>Pass Rate</div></div>
                         </div>
-                        <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Contact Us</a>
+                        <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-btn-slide"><i class="fab fa-whatsapp"></i> Contact on WhatsApp</a>
                     </div>
                 </div>
+                
                 <!-- Slide 2 -->
                 <div class="swiper-slide">
                     <div class="slide-bg" style="background-image: url('assets/images/slide-2.jpg');"></div>
@@ -722,10 +682,11 @@
                     <div class="slide-content">
                         <div class="slide-badge"><i class="fas fa-graduation-cap"></i> PROFESSIONAL TRAINING</div>
                         <h1>Master Any Aircraft<br><span class="gradient-text">With Confidence</span></h1>
-                        <p>Boeing • Airbus • Gulfstream • Robinson • Embraer • All Types</p>
-                        <a href="samples.html" class="btn" style="background: white; color: var(--primary); margin-top: 1rem;">📄 Free Samples</a>
+                        <p>Comprehensive resources for Boeing, Airbus, Gulfstream, Robinson, and all major manufacturers</p>
+                        <a href="samples.html" class="btn-slide">📄 View Free Samples</a>
                     </div>
                 </div>
+                
                 <!-- Slide 3 -->
                 <div class="swiper-slide">
                     <div class="slide-bg" style="background-image: url('assets/images/slide-3.jpg');"></div>
@@ -733,10 +694,11 @@
                     <div class="slide-content">
                         <div class="slide-badge"><i class="fas fa-tools"></i> MAINTENANCE EXCELLENCE</div>
                         <h1>Complete CMM Libraries<br><span class="gradient-text">For Every Aircraft</span></h1>
-                        <p>Component Maintenance Manuals • Organized by ATA Chapters</p>
-                        <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Get Access</a>
+                        <p>Component Maintenance Manuals organized by ATA chapters. Updated regularly.</p>
+                        <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-btn-slide"><i class="fab fa-whatsapp"></i> Get Instant Access</a>
                     </div>
                 </div>
+                
                 <!-- Slide 4 -->
                 <div class="swiper-slide">
                     <div class="slide-bg" style="background-image: url('assets/images/slide-4.jpg');"></div>
@@ -744,8 +706,104 @@
                     <div class="slide-content">
                         <div class="slide-badge"><i class="fas fa-helicopter"></i> ALL HELICOPTER TYPES</div>
                         <h1>From Robinson to Sikorsky<br><span class="gradient-text">We've Got You Covered</span></h1>
-                        <p>Full maintenance manuals • Torque specs • MPI • FPI procedures</p>
-                        <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Contact Team</a>
+                        <p>Training materials for all helicopter models from every major manufacturer</p>
+                        <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-btn-slide"><i class="fab fa-whatsapp"></i> Contact Our Team</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 5 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('assets/images/slide-5.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge"><i class="fas fa-chart-line"></i> BOEING SPECIALIST</div>
+                        <h1>Boeing 737NG & 787<br><span class="gradient-text">Complete Training</span></h1>
+                        <p>Full DFCS, Autopilot, Flight Controls systems with 5000+ MCQs</p>
+                        <a href="samples.html" class="btn-slide">📄 View Boeing Samples</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 6 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('assets/images/slide-6.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge"><i class="fas fa-plane"></i> AIRBUS EXPERT</div>
+                        <h1>Airbus A320 Family<br><span class="gradient-text">Full Systems Coverage</span></h1>
+                        <p>EGPWS, ISIS, TCAS, ADF systems. Comprehensive materials for A318-A321</p>
+                        <a href="samples.html" class="btn-slide">📄 View Airbus Samples</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 7 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('assets/images/slide-7.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge"><i class="fas fa-rocket"></i> BUSINESS JETS</div>
+                        <h1>Gulfstream G700/G800<br><span class="gradient-text">Premium Training</span></h1>
+                        <p>Advanced training materials for premium business jets. Maintenance and operations.</p>
+                        <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-btn-slide"><i class="fab fa-whatsapp"></i> Inquire Now</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 8 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('assets/images/slide-8.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge"><i class="fas fa-chart-simple"></i> 100% PASS RATE</div>
+                        <h1>Exam Preparation<br><span class="gradient-text">Guaranteed Success</span></h1>
+                        <p>Our students consistently pass EASA Part-66 exams on their first attempt</p>
+                        <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-btn-slide"><i class="fab fa-whatsapp"></i> Start Your Journey</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 9 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('assets/images/slide-9.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge"><i class="fas fa-clock"></i> 24/7 SUPPORT</div>
+                        <h1>Instant Access<br><span class="gradient-text">Via WhatsApp</span></h1>
+                        <p>Get your materials immediately after payment. No waiting, no delays</p>
+                        <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-btn-slide"><i class="fab fa-whatsapp"></i> Contact Support</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 10 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('assets/images/slide-10.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge"><i class="fas fa-globe"></i> GLOBAL REACH</div>
+                        <h1>Trusted Worldwide<br><span class="gradient-text">By Professionals</span></h1>
+                        <p>Join thousands of successful aviation professionals from around the world</p>
+                        <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-btn-slide"><i class="fab fa-whatsapp"></i> Join Now</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 11 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('assets/images/slide-11.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge"><i class="fas fa-book-open"></i> COMPLETE LIBRARY</div>
+                        <h1>50,000+ Questions<br><span class="gradient-text">With Detailed Answers</span></h1>
+                        <p>Updated regularly to match latest EASA Part-66 examination standards</p>
+                        <a href="samples.html" class="btn-slide">📄 View Question Samples</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 12 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('assets/images/slide-12.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge"><i class="fas fa-star"></i> EXCELLENT REVIEWS</div>
+                        <h1>Rated 5 Stars<br><span class="gradient-text">By Our Students</span></h1>
+                        <p>Exceptional service and quality. We guarantee your satisfaction</p>
+                        <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-btn-slide"><i class="fab fa-whatsapp"></i> Read Testimonials</a>
                     </div>
                 </div>
             </div>
@@ -755,93 +813,85 @@
         </div>
     </section>
 
-    <!-- Services -->
+    <!-- Services Section -->
     <section id="services">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Premium Services</h2>
-            <p class="section-subtitle" data-aos="fade-up">Everything you need to succeed</p>
+            <p class="section-subtitle" data-aos="fade-up">Everything you need to succeed in your aviation career</p>
+            
             <div class="services-grid">
                 <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-icon"><i class="fas fa-database"></i></div>
                     <h3>Exclusive Question Banks</h3>
-                    <p>50,000+ EASA Part-66 questions with detailed answers covering all aircraft systems.</p>
+                    <p>50,000+ EASA Part-66 questions with detailed answers and references covering all aircraft systems.</p>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-icon"><i class="fas fa-book"></i></div>
                     <h3>Complete CMM Libraries</h3>
-                    <p>Component Maintenance Manuals for all major manufacturers by ATA chapters.</p>
+                    <p>Component Maintenance Manuals for all major aircraft manufacturers. Organized by ATA chapters.</p>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-icon"><i class="fas fa-chalkboard-user"></i></div>
                     <h3>Interactive Training</h3>
-                    <p>Step-by-step guides and CBTs for all aircraft types.</p>
+                    <p>Step-by-step guides and CBTs for all aircraft types from small helicopters to large jets.</p>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="service-icon"><i class="fab fa-whatsapp"></i></div>
                     <h3>Instant Delivery</h3>
-                    <p>Get your materials immediately via WhatsApp. 24/7 support.</p>
+                    <p>Get your materials immediately via WhatsApp. 24/7 support for all your aviation needs.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Coverage Banner -->
-    <section style="padding: 0 2rem;">
+    <!-- Coverage Section -->
+    <section id="coverage">
         <div class="container">
             <div class="coverage-banner" data-aos="fade-up">
-                <i class="fas fa-globe-americas" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                <i class="fas fa-globe-americas" style="font-size: 3rem; margin-bottom: 1rem; display: inline-block;"></i>
                 <h3>Complete Aircraft Coverage</h3>
-                <p>Training materials and documentation for ALL aircraft types from every major manufacturer worldwide.</p>
+                <p>We provide training materials and documentation for ALL aircraft types - commercial jets, business jets, regional aircraft, and helicopters from every major manufacturer worldwide.</p>
                 <div class="aircraft-tags">
-                    <span class="aircraft-tag">Boeing</span><span class="aircraft-tag">Airbus</span><span class="aircraft-tag">Gulfstream</span>
-                    <span class="aircraft-tag">Bombardier</span><span class="aircraft-tag">Embraer</span><span class="aircraft-tag">ATR</span>
-                    <span class="aircraft-tag">Robinson</span><span class="aircraft-tag">Bell</span><span class="aircraft-tag">Airbus Helicopters</span>
-                    <span class="aircraft-tag">Sikorsky</span><span class="aircraft-tag">Leonardo</span><span class="aircraft-tag">Cessna</span>
-                    <span class="aircraft-tag">Piper</span><span class="aircraft-tag">Beechcraft</span><span class="aircraft-tag">Dassault</span>
+                    <span class="aircraft-tag">Boeing (All series)</span>
+                    <span class="aircraft-tag">Airbus (All series)</span>
+                    <span class="aircraft-tag">Gulfstream</span>
+                    <span class="aircraft-tag">Bombardier</span>
+                    <span class="aircraft-tag">Embraer</span>
+                    <span class="aircraft-tag">ATR</span>
+                    <span class="aircraft-tag">Robinson</span>
+                    <span class="aircraft-tag">Bell</span>
+                    <span class="aircraft-tag">Airbus Helicopters</span>
+                    <span class="aircraft-tag">Sikorsky</span>
+                    <span class="aircraft-tag">Leonardo</span>
+                    <span class="aircraft-tag">Cessna</span>
+                    <span class="aircraft-tag">Piper</span>
+                    <span class="aircraft-tag">Beechcraft</span>
+                    <span class="aircraft-tag">Dassault</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Aircraft Examples -->
-    <section id="aircraft" style="background: var(--gray-light);">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Popular Aircraft Examples</h2>
-            <p class="section-subtitle" data-aos="fade-up">Just a few examples from our extensive library. We cover ALL aircraft types!</p>
-            <div class="aircraft-grid">
-                <div class="aircraft-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="aircraft-image"><img src="assets/images/boeing-737.png" alt="Boeing 737NG" loading="lazy"></div>
-                    <div class="aircraft-info"><h3>Boeing 737NG</h3><p>Complete DFCS, Autopilot, Flight Controls systems.</p><span class="badge-example">Example aircraft</span></div>
-                </div>
-                <div class="aircraft-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="aircraft-image"><img src="assets/images/body2.jpg" alt="Airbus A320" loading="lazy"></div>
-                    <div class="aircraft-info"><h3>Airbus A320 Family</h3><p>EGPWS, ISIS, TCAS, ADF systems.</p><span class="badge-example">Example aircraft</span></div>
-                </div>
-                <div class="aircraft-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="aircraft-image"><img src="assets/images/body3.jpg" alt="Robinson R44" loading="lazy"></div>
-                    <div class="aircraft-info"><h3>Robinson R44</h3><p>Maintenance manuals, torque specs, MPI, FPI.</p><span class="badge-example">Example aircraft</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery -->
+    <!-- Gallery Section -->
     <section id="gallery" class="gallery">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Our Gallery</h2>
             <p class="section-subtitle" data-aos="fade-up">Explore our world of aviation</p>
-            <div class="swiper gallery-swiper">
+            
+            <div class="swiper gallery-swiper" data-aos="fade-up">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="assets/images/slide-1.jpg" alt="Gallery 1" loading="lazy"></div>
-                    <div class="swiper-slide"><img src="assets/images/slide-2.jpg" alt="Gallery 2" loading="lazy"></div>
-                    <div class="swiper-slide"><img src="assets/images/slide-3.jpg" alt="Gallery 3" loading="lazy"></div>
-                    <div class="swiper-slide"><img src="assets/images/slide-4.jpg" alt="Gallery 4" loading="lazy"></div>
-                    <div class="swiper-slide"><img src="assets/images/boeing-737.png" alt="Boeing" loading="lazy"></div>
-                    <div class="swiper-slide"><img src="assets/images/body2.jpg" alt="Airbus" loading="lazy"></div>
-                    <div class="swiper-slide"><img src="assets/images/body3.jpg" alt="Robinson" loading="lazy"></div>
-                    <div class="swiper-slide"><img src="assets/images/body4.jpg" alt="Gulfstream" loading="lazy"></div>
-                    <div class="swiper-slide"><img src="assets/images/body5.jpg" alt="Embraer" loading="lazy"></div>
-                    <div class="swiper-slide"><img src="assets/images/hero-bg.jpg" alt="Aviation" loading="lazy"></div>
+                    <div class="swiper-slide"><img src="assets/images/slide-1.jpg" alt="Aviation"></div>
+                    <div class="swiper-slide"><img src="assets/images/slide-2.jpg" alt="Aviation"></div>
+                    <div class="swiper-slide"><img src="assets/images/slide-3.jpg" alt="Aviation"></div>
+                    <div class="swiper-slide"><img src="assets/images/slide-4.jpg" alt="Aviation"></div>
+                    <div class="swiper-slide"><img src="assets/images/slide-5.jpg" alt="Aviation"></div>
+                    <div class="swiper-slide"><img src="assets/images/slide-6.jpg" alt="Aviation"></div>
+                    <div class="swiper-slide"><img src="assets/images/slide-7.jpg" alt="Aviation"></div>
+                    <div class="swiper-slide"><img src="assets/images/slide-8.jpg" alt="Aviation"></div>
+                    <div class="swiper-slide"><img src="assets/images/slide-9.jpg" alt="Aviation"></div>
+                    <div class="swiper-slide"><img src="assets/images/slide-10.jpg" alt="Aviation"></div>
+                    <div class="swiper-slide"><img src="assets/images/slide-11.jpg" alt="Aviation"></div>
+                    <div class="swiper-slide"><img src="assets/images/slide-12.jpg" alt="Aviation"></div>
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-next"></div>
@@ -850,29 +900,16 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">What Our Students Say</h2>
-            <p class="section-subtitle" data-aos="fade-up">Join thousands of successful aviation professionals</p>
-            <div class="testimonial-card" data-aos="fade-up">
-                <div class="testimonial-avatar"><i class="fas fa-user-astronaut"></i></div>
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p style="margin-bottom: 1rem;">"The comprehensive question banks covering all aircraft types are invaluable. Exceptional service and quality!"</p>
-                <p style="font-weight: 700; color: var(--primary);">— Michael Rodriguez</p>
-                <p style="color: #666;">Certified Aviation Technician, UK</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
+    <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2 style="font-size: 2.5rem;">Ready to Advance Your Career?</h2>
-            <p style="margin-top: 1rem;">Get instant access to premium question banks and maintenance manuals</p>
-            <div class="cta-buttons">
-                <a href="samples.html" class="btn btn-white">📄 Free Samples</a>
-                <a href="https://wa.me/+447765415524" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <h2 data-aos="fade-up" style="font-size: 2.5rem;">Ready to Advance Your Aviation Career?</h2>
+            <p data-aos="fade-up" style="font-size: 1.1rem; margin-top: 1rem;">Get instant access to premium question banks and maintenance manuals</p>
+            <div class="cta-buttons" data-aos="fade-up">
+                <a href="samples.html" class="btn btn-white">📄 View Free Samples</a>
+                <a href="https://wa.me/+447765415524" target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Contact via WhatsApp
+                </a>
             </div>
         </div>
     </section>
@@ -880,61 +917,120 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-grid">
-            <div class="footer-col"><h4>AVIATIONHUB</h4><p>Premium EASA Part-66 training resources covering ALL aircraft types worldwide.</p><div class="social-links"><a href="https://wa.me/+447765415524"><i class="fab fa-whatsapp"></i></a></div></div>
-            <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#services">Services</a></li><li><a href="#aircraft">Aircraft</a></li><li><a href="samples.html">Free Samples</a></li></ul></div>
-            <div class="footer-col"><h4>Coverage</h4><ul><li>All Commercial Jets</li><li>All Business Jets</li><li>All Helicopters</li><li>All GA Aircraft</li></ul></div>
-            <div class="footer-col"><h4>Contact</h4><p>85 Great Portland St, London, UK</p><p><i class="fab fa-whatsapp"></i> +44 7765 415524</p></div>
+            <div class="footer-col">
+                <h4>AVIATIONHUB</h4>
+                <p>Premium aviation training resources for EASA Part-66, maintenance manuals, and question banks covering ALL aircraft types worldwide.</p>
+                <div class="social-links">
+                    <a href="https://wa.me/+447765415524" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#coverage">Coverage</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="samples.html">Free Samples</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Coverage Includes</h4>
+                <ul>
+                    <li>All Commercial Jets</li>
+                    <li>All Business Jets</li>
+                    <li>All Regional Aircraft</li>
+                    <li>All Helicopters</li>
+                    <li>All General Aviation</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p><i class="fas fa-map-marker-alt"></i> 85 Great Portland St<br>London, W1W 7LT, UK</p>
+                <p><i class="fab fa-whatsapp"></i> +44 7765 415524</p>
+                <p><i class="far fa-envelope"></i> nvd.t.airbus@gmail.com</p>
+            </div>
         </div>
-        <div class="footer-bottom"><p>&copy; 2026 AviationHub | EASA Part-66 Approved | Covering ALL Aircraft Types Worldwide</p></div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AviationHub. All rights reserved. | EASA Part-66 Approved Training Materials | Covering ALL Aircraft Types Worldwide</p>
+        </div>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 800, once: true, offset: 100 });
-        
-        new Swiper('.hero-swiper', {
+
+        // Hero Slider - Professional configuration
+        const heroSwiper = new Swiper('.hero-swiper', {
             loop: true,
-            autoplay: { delay: 4000, disableOnInteraction: false },
-            effect: 'fade',
-            fadeEffect: { crossFade: true },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
             speed: 800,
-            pagination: { el: '.swiper-pagination', clickable: true },
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+            effect: 'slide',
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
         });
-        
+
+        // Gallery Swiper
         new Swiper('.gallery-swiper', {
             slidesPerView: 1,
             spaceBetween: 20,
             loop: true,
-            autoplay: { delay: 4000, disableOnInteraction: false },
-            pagination: { el: '.swiper-pagination', clickable: true },
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-            breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            speed: 600,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+            }
         });
 
+        // Mobile menu toggle
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
-        if (menuToggle) { menuToggle.addEventListener('click', () => navMenu.classList.toggle('active')); }
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
 
+        // Scroll to top button
         window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
             const scrollTop = document.getElementById('scrollTop');
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-            scrollTop.classList.toggle('show', window.scrollY > 300);
+            if (window.scrollY > 300) {
+                scrollTop.classList.add('show');
+            } else {
+                scrollTop.classList.remove('show');
+            }
         });
 
-        document.getElementById('scrollTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        document.getElementById('scrollTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href !== '#' && href !== '#home' && href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) target.scrollIntoView({ behavior: 'smooth' });
-                    navMenu.classList.remove('active');
-                }
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
             });
         });
     </script>
