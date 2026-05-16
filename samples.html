@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Samples | AviationHub - EASA Part-66 Resources</title>
+    <meta name="description" content="Free sample EASA Part-66 questions and maintenance manuals for Boeing 737NG, Airbus A320, Robinson R44 and more.">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a2e5c;
+            --primary-dark: #051a36;
+            --secondary: #1e88e5;
+            --accent: #00bcd4;
+            --light-blue: #e3f2fd;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #f5f7fa;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--primary);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            margin: 100px 2rem 1rem 2rem;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--secondary);
+            transform: translateX(-5px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Alert */
+        .alert {
+            background: linear-gradient(135deg, #0a2e5c, #1e88e5);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .alert i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin: 2rem 0 1.5rem;
+            color: var(--primary);
+            border-left: 4px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        /* Accordion */
+        .accordion {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .accordion-header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header:hover {
+            background: var(--secondary);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content.active {
+            max-height: 2000px;
+            padding: 1.5rem;
+        }
+
+        /* Download Buttons */
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f0f2f5;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .download-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* Question Card */
+        .question-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .question-text {
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        .options {
+            list-style: none;
+            padding-left: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .options li {
+            margin: 0.4rem 0;
+            font-size: 0.9rem;
+        }
+
+        .answer {
+            background: #e8f5e9;
+            padding: 0.6rem;
+            border-radius: 8px;
+            margin-top: 0.8rem;
+            border-left: 3px solid #4caf50;
+        }
+
+        .answer strong {
+            color: #2e7d32;
+        }
+
+        .source {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 0;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .container {
+                padding: 1rem;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-tower-broadcast"></i>
+                <span class="logo-text">AVIATION<span>HUB</span></span>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="index.html#services">SERVICES</a></li>
+                <li><a href="index.html#about">ABOUT</a></li>
+                <li><a href="index.html#contact">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+
+    <div class="container">
+        <div class="alert">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>Free Samples</strong> — These are only a portion of our complete database. All books and questions for various aircraft are available via WhatsApp.</p>
+        </div>
+
+        <h1 style="font-size: 1.8rem; margin-bottom: 0.5rem;">📄 Sample Documents</h1>
+        <p style="color: #666; margin-bottom: 2rem;">Click any item to start download</p>
+
+        <!-- Airbus CMM -->
+        <div class="accordion">
+            <div class="accordion-header">
+                <span><i class="fas fa-plane"></i> Airbus A320 / A340 CMMs</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <div class="download-grid">
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Full-CMM-A310A306A320-Manufacture-JUL.2019.xlsx" class="download-btn" target="_blank"><i class="fas fa-file-excel"></i> A320 Full CMM</a>
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Full-CMM-A340-Manufacture-JAN.2020.xlsx" class="download-btn" target="_blank"><i class="fas fa-file-excel"></i> A340 Full CMM</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vendor CMMs -->
+        <div class="accordion">
+            <div class="accordion-header">
+                <span><i class="fas fa-tools"></i> Vendor CMMs (by ATA Chapter)</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <div class="download-grid">
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Vendor-CMM-CH.-21.xlsx" class="download-btn" target="_blank">CH. 21</a>
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Vendor-CMM-CH.-22.xlsx" class="download-btn" target="_blank">CH. 22</a>
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Vendor-CMM-CH.-23.xlsx" class="download-btn" target="_blank">CH. 23</a>
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Vendor-CMM-CH.-24.xlsx" class="download-btn" target="_blank">CH. 24</a>
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Vendor-CMM-CH.-25.xlsx" class="download-btn" target="_blank">CH. 25</a>
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Vendor-CMM-CH.26.xlsx" class="download-btn" target="_blank">CH. 26</a>
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Vendor-CMM-CH.-27.xlsx" class="download-btn" target="_blank">CH. 27</a>
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Vendor-CMM-CH.-28.xlsx" class="download-btn" target="_blank">CH. 28</a>
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Vendor-CMM-CH.-29.xlsx" class="download-btn" target="_blank">CH. 29</a>
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Vendor-CMM-CH.-30-31.xlsx" class="download-btn" target="_blank">CH. 30-31</a>
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Vendor-CMM-CH.-32.xlsx" class="download-btn" target="_blank">CH. 32</a>
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Vendor-CMM-CH.-33-57.xlsx" class="download-btn" target="_blank">CH. 33-57</a>
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Vendor-CMM-CH.-71-80.xlsx" class="download-btn" target="_blank">CH. 71-80</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Boeing & Others -->
+        <div class="accordion">
+            <div class="accordion-header">
+                <span><i class="fas fa-chart-line"></i> Boeing &amp; Other CMMs</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <div class="download-grid">
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Boeing-CMM.xlsx" class="download-btn" target="_blank"><i class="fas fa-file-excel"></i> Boeing CMM</a>
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/Fokker-CMMs.xlsx" class="download-btn" target="_blank"><i class="fas fa-file-excel"></i> Fokker CMMs</a>
+                    <a href="https://jetdocument.com/wp-content/uploads/2025/05/All-Battery-PNs-CMM-1.pdf" class="download-btn" target="_blank"><i class="fas fa-file-pdf"></i> Battery CMM (PDF)</a>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="section-title">📝 Sample MCQs</h1>
+
+        <!-- Boeing 737NG -->
+        <div class="accordion">
+            <div class="accordion-header">
+                <span><i class="fas fa-plane"></i> Boeing 737NG</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <div class="question-card">
+                    <div class="question-text">Q1: Which failure during an ILS approach causes the autopilot to disengage immediately?</div>
+                    <ul class="options"><li>A) Loss of both radio altimeters below 200 feet AGL</li><li>B) Loss of IRS data during localizer alignment</li><li>C) Course deviation exceeding 5 degrees</li></ul>
+                    <div class="answer"><strong>✓ Answer:</strong> A</div>
+                    <div class="source">Source: DFCS Manual | ATA-22 | Page 150</div>
+                </div>
+                <div class="question-card">
+                    <div class="question-text">Q2: What does the FCC do if it identifies an erroneous radio altimeter signal during an ILS approach?</div>
+                    <ul class="options"><li>A) Disconnects autopilot</li><li>B) Uses a secondary radio altimeter</li><li>C) Ignores the altitude input</li></ul>
+                    <div class="answer"><strong>✓ Answer:</strong> B</div>
+                    <div class="source">Source: DFCS Manual | ATA-22 | Page 150</div>
+                </div>
+                <div class="question-card">
+                    <div class="question-text">Q3: What role does the Mach Trim system play during high-speed flight?</div>
+                    <ul class="options"><li>A) Minimizes pitch fluctuations</li><li>B) Counters Mach tuck with nose-up elevator</li><li>C) Keeps pitch trim consistent</li></ul>
+                    <div class="answer"><strong>✓ Answer:</strong> B</div>
+                    <div class="source">Source: DFCS Manual | ATA-22 | Page 121</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Airbus A320 -->
+        <div class="accordion">
+            <div class="accordion-header">
+                <span><i class="fas fa-plane"></i> Airbus A320</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <div class="question-card">
+                    <div class="question-text">Q1: What does the Terrain Clearance Floor (TCF) mode in EGPWS do?</div>
+                    <ul class="options"><li>A) Decreases terrain clearance</li><li>B) Increases terrain clearance above airport runway</li><li>C) Changes alert generation altitude</li></ul>
+                    <div class="answer"><strong>✓ Answer:</strong> B</div>
+                    <div class="source">Source: EGPWS Manual | Page 106</div>
+                </div>
+                <div class="question-card">
+                    <div class="question-text">Q2: Which feature is added in the "ENHANCED" functions of EGPWS?</div>
+                    <ul class="options"><li>A) Terrain Awareness Alerting and Display (TAD)</li><li>B) Automatic avoidance maneuvers</li><li>C) Speed monitoring</li></ul>
+                    <div class="answer"><strong>✓ Answer:</strong> A</div>
+                    <div class="source">Source: EGPWS Manual | Page 106</div>
+                </div>
+                <div class="question-card">
+                    <div class="question-text">Q3: What is the primary function of the Radio Management Panel (RMP) in the ADF system?</div>
+                    <ul class="options"><li>A) Provide power to ADF</li><li>B) Control ADF receiver selection</li><li>C) Indicate frequency</li></ul>
+                    <div class="answer"><strong>✓ Answer:</strong> B</div>
+                    <div class="source">Source: ADF Manual | Page 64</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Robinson R44 -->
+        <div class="accordion">
+            <div class="accordion-header">
+                <span><i class="fas fa-helicopter"></i> Robinson R44 Helicopter</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <div class="question-card">
+                    <div class="question-text">Q1: What care should be taken when cleaning the exterior of an R44 helicopter?</div>
+                    <ul class="options"><li>A) Avoid high-pressure water near main rotor/static ports</li><li>B) Use solvent-based solutions</li><li>C) Blow compressed air into drain holes</li></ul>
+                    <div class="answer"><strong>✓ Answer:</strong> A</div>
+                    <div class="source">Source: Maintenance Manual | CH.23 | Page 23.1</div>
+                </div>
+                <div class="question-card">
+                    <div class="question-text">Q2: Which defect requires immediate rejection of a part during Magnetic Particle Inspection (MPI)?</div>
+                    <ul class="options"><li>A) Linear indications >0.125" angled >15°</li><li>B) Discoloration in test fluid</li><li>C) Minor surface roughness</li></ul>
+                    <div class="answer"><strong>✓ Answer:</strong> A</div>
+                    <div class="source">Source: Maintenance Manual | CH.23 | Page 23.28</div>
+                </div>
+                <div class="question-card">
+                    <div class="question-text">Q3: What is the main reason for applying a torque stripe to critical fasteners?</div>
+                    <ul class="options"><li>A) Corrosion protection</li><li>B) Visually identify loosening</li><li>C) Confirm proper torque</li></ul>
+                    <div class="answer"><strong>✓ Answer:</strong> B</div>
+                    <div class="source">Source: Maintenance Manual | CH.23 | Page 23.7</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 AviationHub. All rights reserved.</p>
+            <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/+447765415524">+44 7765 415524</a></p>
+            <p><a href="index.html">← Back to Home</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
+
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                content.classList.toggle('active');
+                const icon = this.querySelector('i:last-child');
+                if (icon) {
+                    if (content.classList.contains('active')) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    } else {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

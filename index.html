@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AviationHub | Premium EASA Part-66 Training & Aviation Resources</title>
+    <meta name="description" content="World-class EASA Part-66 question banks, aircraft maintenance manuals, and aviation training resources. Your gateway to aviation excellence.">
+    <meta name="keywords" content="aviation training, EASA Part-66, aircraft maintenance, CMM, question bank, aviation resources">
+    <meta name="author" content="AviationHub">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a2e5c;
+            --primary-dark: #051a36;
+            --secondary: #1e88e5;
+            --accent: #00bcd4;
+            --light-blue: #e3f2fd;
+            --gold: #ffc107;
+            --whatsapp: #25D366;
+            --gradient: linear-gradient(135deg, #0a2e5c 0%, #1e88e5 100%);
+            --gradient-light: linear-gradient(135deg, #e3f2fd 0%, #bbdef5 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 46, 92, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 0.7rem 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: -1px;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent);
+        }
+
+        .nav-btn {
+            background: var(--accent);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            color: var(--primary) !important;
+            font-weight: 600 !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 2000"><path fill="rgba(255,255,255,0.03)" d="M1000 0L2000 1000L1000 2000L0 1000L1000 0z"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-gradient-text {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 20px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        /* Contact Card */
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1rem 2rem;
+            display: inline-flex;
+            gap: 2rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--whatsapp);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37,211,102,0.4);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .service-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.8rem 1.8rem;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 0;
+                background: var(--primary);
+            }
+            .nav-menu.active { display: flex; }
+            .hero h1 { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; }
+            section { padding: 3rem 1rem; }
+            .stats-grid { gap: 1rem; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeInUp 0.6s ease-out; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-tower-broadcast"></i>
+                <span class="logo-text">AVIATION<span>HUB</span></span>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="samples.html">SAMPLES</a></li>
+                <li><a href="#contact" class="nav-btn">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge" data-aos="fade-down">
+                <i class="fas fa-certificate"></i> EASA PART-66 APPROVED
+            </div>
+            <h1 data-aos="fade-up">
+                Your Gateway to<br>
+                <span class="hero-gradient-text">Aviation Excellence</span>
+            </h1>
+            <p data-aos="fade-up" data-aos-delay="100">
+                Premium question banks • Maintenance manuals • Training materials
+            </p>
+
+            <div class="stats-grid" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-item"><div class="stat-number">50,000+</div><div>Questions</div></div>
+                <div class="stat-item"><div class="stat-number">25+</div><div>Aircraft Types</div></div>
+                <div class="stat-item"><div class="stat-number">100%</div><div>Pass Rate</div></div>
+            </div>
+
+            <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
+                <span><i class="fas fa-map-marker-alt"></i> London, UK</span>
+                <span><i class="fab fa-whatsapp"></i> +44 7765 415524</span>
+            </div>
+
+            <a href="https://wa.me/+447765415524" class="whatsapp-btn" data-aos="fade-up" data-aos-delay="400">
+                <i class="fab fa-whatsapp"></i> Contact on WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Services</h2>
+            <p class="section-subtitle" data-aos="fade-up">Everything you need to succeed</p>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon"><i class="fas fa-database"></i></div>
+                    <h3>Question Banks</h3>
+                    <p>50,000+ EASA Part-66 questions with detailed answers.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon"><i class="fas fa-book"></i></div>
+                    <h3>CMM Libraries</h3>
+                    <p>Complete Component Maintenance Manuals by ATA chapter.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon"><i class="fas fa-chalkboard-user"></i></div>
+                    <h3>Training Courses</h3>
+                    <p>Interactive CBTs for Boeing, Airbus, and helicopters.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon"><i class="fab fa-whatsapp"></i></div>
+                    <h3>Instant Delivery</h3>
+                    <p>Get your materials immediately via WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" style="background: var(--gradient-light);">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">About AviationHub</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.1rem;">AviationHub is your trusted resource for EASA Part-66 training, aircraft maintenance manuals, and comprehensive question banks. We serve aviation professionals worldwide with instant access to premium materials.</p>
+                <div class="stats-grid" style="margin-top: 2rem;">
+                    <div class="stat-item" style="background: white;"><div class="stat-number" style="color: var(--primary);">10+</div><div>Years Experience</div></div>
+                    <div class="stat-item" style="background: white;"><div class="stat-number" style="color: var(--primary);">5000+</div><div>Happy Students</div></div>
+                    <div class="stat-item" style="background: white;"><div class="stat-number" style="color: var(--primary);">24/7</div><div>Support</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2 style="font-size: 2rem;" data-aos="fade-up">Ready to Start?</h2>
+            <p data-aos="fade-up">Get instant access to premium aviation resources</p>
+            <div style="margin-top: 2rem;" data-aos="fade-up">
+                <a href="samples.html" class="btn">📄 View Free Samples</a>
+                <a href="https://wa.me/+447765415524" class="btn" style="background: var(--whatsapp); color: white; margin-left: 1rem;">💬 WhatsApp Us</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p><i class="fas fa-tower-broadcast"></i> AviationHub</p>
+            <p>85 Great Portland Street, London, W1W 7LT, UK</p>
+            <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/+447765415524">+44 7765 415524</a></p>
+            <p style="margin-top: 2rem;">&copy; 2026 AviationHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '#home' && href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
