@@ -8,11 +8,10 @@
     <meta name="keywords" content="aviation training, EASA Part-66, aircraft maintenance, Boeing 737NG, Airbus A320, CMM, question bank, Gulfstream G700, Robinson R44, Embraer">
     <meta name="author" content="AviationHub">
     
-    <!-- Favicon - A with white, H with navy -->
-    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-    <link rel="shortcut icon" type="image/svg+xml" href="assets/images/favicon.svg">
-    <link rel="apple-touch-icon" href="assets/images/favicon.svg">
-	
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='15' y='25' width='70' height='50' rx='8' fill='%23ffd700'/%3E%3Ctext x='38' y='65' font-family='Segoe UI, Arial, sans-serif' font-size='42' font-weight='800' fill='%230a2e5c' text-anchor='middle'%3EA%3C/text%3E%3Ctext x='64' y='65' font-family='Segoe UI, Arial, sans-serif' font-size='42' font-weight='800' fill='%230a2e5c' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+    <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='15' y='25' width='70' height='50' rx='8' fill='%23ffd700'/%3E%3Ctext x='38' y='65' font-family='Segoe UI, Arial, sans-serif' font-size='42' font-weight='800' fill='%230a2e5c' text-anchor='middle'%3EA%3C/text%3E%3Ctext x='64' y='65' font-family='Segoe UI, Arial, sans-serif' font-size='42' font-weight='800' fill='%230a2e5c' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+    
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -22,7 +21,7 @@
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Swiper.js -->
+    <!-- Swiper.js for carousel -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     
     <style>
@@ -75,6 +74,55 @@
             pointer-events: none;
             z-index: 9998;
             transition: all 0.2s ease;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37,211,102,0.5);
+        }
+        
+        .whatsapp-float i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .whatsapp-tooltip {
+            position: absolute;
+            left: 70px;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
         }
 
         /* Scrollbar */
@@ -185,53 +233,51 @@
             color: white;
         }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
+        /* Hero Slider */
+        .hero-slider {
+            height: 100vh;
             position: relative;
+            overflow: hidden;
+        }
+        
+        .swiper-slide {
+            position: relative;
+        }
+        
+        .slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+        }
+        
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            overflow: hidden;
-        }
-        
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('assets/images/hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            animation: slowZoom 25s ease-in-out infinite;
-        }
-        
-        @keyframes slowZoom {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-        }
-        
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1000px;
             padding: 0 2rem;
         }
         
-        .hero-badge {
+        .slide-badge {
             display: inline-block;
             background: rgba(255,255,255,0.15);
             backdrop-filter: blur(10px);
@@ -242,42 +288,46 @@
             border: 1px solid rgba(255,255,255,0.3);
         }
         
-        .floating-airplane {
-            position: absolute;
-            top: 15%;
-            right: 5%;
-            max-width: 280px;
-            width: 100%;
-            animation: floatPlane 5s ease-in-out infinite;
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));
-            z-index: 3;
-        }
-        
-        @keyframes floatPlane {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-25px) rotate(2deg); }
-        }
-        
-        .hero h1 {
+        .slide-content h1 {
             font-size: 4rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
             line-height: 1.2;
         }
         
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .hero p {
+        .slide-content p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            opacity: 0.95;
+            max-width: 700px;
         }
         
+        .swiper-button-next, .swiper-button-prev {
+            color: white;
+            background: rgba(0,0,0,0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background: var(--accent);
+        }
+        
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 1.2rem;
+        }
+        
+        .swiper-pagination-bullet {
+            background: white;
+            opacity: 0.5;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: var(--accent);
+            opacity: 1;
+        }
+
         /* Stats */
         .stats-grid {
             display: flex;
@@ -300,47 +350,6 @@
             font-size: 2.5rem;
             font-weight: 800;
             color: var(--accent);
-        }
-        
-        /* Contact Card */
-        .contact-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 1rem 2rem;
-            display: inline-flex;
-            gap: 2rem;
-            margin: 1rem 0;
-            flex-wrap: wrap;
-            justify-content: center;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .contact-info-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        
-        .contact-info-item i { color: var(--accent); }
-        
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #25D366;
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            margin-top: 1rem;
-        }
-        
-        .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(37,211,102,0.4);
         }
         
         /* Sections */
@@ -408,7 +417,7 @@
         
         .service-icon i { font-size: 2rem; color: var(--accent); }
         
-        /* Aircraft Coverage Banner */
+        /* Coverage Banner */
         .coverage-banner {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 20px;
@@ -417,9 +426,6 @@
             color: white;
             margin: 3rem 0;
         }
-        
-        .coverage-banner h3 { font-size: 1.8rem; margin-bottom: 1rem; }
-        .coverage-banner p { opacity: 0.9; max-width: 800px; margin: 0 auto; }
         
         .aircraft-tags {
             display: flex;
@@ -508,28 +514,26 @@
             color: white;
         }
         
-        /* Gallery */
+        /* Gallery Section */
         .gallery { background: var(--gray-light); }
         
-        .swiper {
+        .gallery .swiper {
             width: 100%;
             padding: 2rem 0 3rem;
         }
         
-        .swiper-slide {
+        .gallery .swiper-slide {
             text-align: center;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow-md);
         }
         
-        .swiper-slide img {
+        .gallery .swiper-slide img {
             width: 100%;
-            height: 300px;
+            height: 280px;
             object-fit: cover;
         }
-        
-        .swiper-pagination-bullet-active { background: var(--accent) !important; }
         
         /* Testimonials */
         .testimonials { background: linear-gradient(135deg, var(--gray-light), var(--gray)); }
@@ -662,8 +666,6 @@
         .scroll-top i { color: white; font-size: 1.2rem; }
         
         /* Responsive */
-        @media (max-width: 1200px) { .floating-airplane { display: none; } }
-        
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav-menu {
@@ -675,13 +677,22 @@
                 background: var(--primary);
             }
             .nav-menu.active { display: flex; }
-            .hero h1 { font-size: 2rem; }
+            
+            .slide-content h1 { font-size: 2rem; }
             .section-title { font-size: 2rem; }
             .stats-grid { gap: 1rem; }
             .stat-item { padding: 0.5rem 1rem; }
             .stat-number { font-size: 1.5rem; }
-            .contact-card { flex-direction: column; gap: 0.5rem; }
             section { padding: 3rem 1rem; }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                left: 20px;
+            }
+            .whatsapp-float i { font-size: 1.5rem; }
+            .whatsapp-tooltip { display: none; }
         }
         
         @keyframes fadeInUp {
@@ -693,6 +704,12 @@
     </style>
 </head>
 <body>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat with us on WhatsApp!</span>
+    </a>
 
     <!-- Custom Cursor -->
     <div class="cursor-dot"></div>
@@ -724,57 +741,80 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        
-        <img src="assets/images/airplane.png" alt="Aircraft" class="floating-airplane">
-        
-        <div class="hero-content">
-            <div class="hero-badge" data-aos="fade-down">
-                <i class="fas fa-certificate"></i> EASA PART-66 APPROVED
+    <!-- Hero Slider Section -->
+    <section id="home" class="hero-slider">
+        <div class="swiper hero-swiper">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('assets/images/slide-1.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge" data-aos="fade-down">
+                            <i class="fas fa-certificate"></i> EASA PART-66 APPROVED
+                        </div>
+                        <h1 data-aos="fade-up">Your Gateway to<br><span class="gradient-text">Aviation Excellence</span></h1>
+                        <p data-aos="fade-up" data-aos-delay="100">Premium question banks • Maintenance manuals • Training materials</p>
+                        <div class="stats-grid" data-aos="fade-up" data-aos-delay="200">
+                            <div class="stat-item"><div class="stat-number">50,000+</div><div>Questions Bank</div></div>
+                            <div class="stat-item"><div class="stat-number">All Types</div><div>Aircraft & Helicopters</div></div>
+                            <div class="stat-item"><div class="stat-number">100%</div><div>Pass Rate</div></div>
+                        </div>
+                        <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-btn" style="display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: white; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; margin-top: 1rem;">
+                            <i class="fab fa-whatsapp"></i> Contact Us on WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('assets/images/slide-2.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge">
+                            <i class="fas fa-graduation-cap"></i> PROFESSIONAL TRAINING
+                        </div>
+                        <h1>Master Any Aircraft<br><span class="gradient-text">With Confidence</span></h1>
+                        <p>Comprehensive resources for Boeing, Airbus, Gulfstream, Robinson, and all major manufacturers</p>
+                        <a href="samples.html" class="btn" style="background: white; color: var(--primary); margin-top: 1rem;">📄 View Free Samples</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('assets/images/slide-3.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge">
+                            <i class="fas fa-tools"></i> MAINTENANCE EXCELLENCE
+                        </div>
+                        <h1>Complete CMM Libraries<br><span class="gradient-text">For Every Aircraft</span></h1>
+                        <p>Component Maintenance Manuals organized by ATA chapters. Updated regularly.</p>
+                        <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-btn" style="display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: white; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; margin-top: 1rem;">
+                            <i class="fab fa-whatsapp"></i> Get Instant Access
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Slide 4 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('assets/images/slide-4.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge">
+                            <i class="fas fa-helicopter"></i> ALL HELICOPTER TYPES
+                        </div>
+                        <h1>From Robinson to Sikorsky<br><span class="gradient-text">We've Got You Covered</span></h1>
+                        <p>Training materials for all helicopter models from every major manufacturer</p>
+                        <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-btn" style="display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: white; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; margin-top: 1rem;">
+                            <i class="fab fa-whatsapp"></i> Contact Our Team
+                        </a>
+                    </div>
+                </div>
             </div>
-            
-            <h1 data-aos="fade-up">
-                Your Gateway to<br>
-                <span class="gradient-text">Aviation Excellence</span>
-            </h1>
-            
-            <p data-aos="fade-up" data-aos-delay="100">
-                Premium question banks • Maintenance manuals • Training materials<br>
-                For aviation professionals worldwide
-            </p>
-            
-            <div class="stats-grid" data-aos="fade-up" data-aos-delay="200">
-                <div class="stat-item">
-                    <div class="stat-number">50,000+</div>
-                    <div>Questions Bank</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">All Types</div>
-                    <div>Aircraft & Helicopters</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div>Pass Rate</div>
-                </div>
-            </div>
-
-            <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="contact-info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>London, United Kingdom</span>
-                </div>
-                <div class="contact-info-item">
-                    <i class="fab fa-whatsapp"></i>
-                    <a href="https://wa.me/+447765415524" target="_blank" style="color: white; text-decoration: none;">+44 7765 415524</a>
-                </div>
-            </div>
-
-            <a href="https://wa.me/+447765415524" target="_blank" class="whatsapp-btn" data-aos="fade-up" data-aos-delay="400">
-                <i class="fab fa-whatsapp"></i> Contact Us on WhatsApp
-            </a>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
         </div>
     </section>
 
@@ -874,16 +914,6 @@
                         <span class="badge-example">Example aircraft</span>
                     </div>
                 </div>
-                <div class="aircraft-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="aircraft-image">
-                        <img src="assets/images/body4.jpg" alt="Gulfstream G700">
-                    </div>
-                    <div class="aircraft-info">
-                        <h3>Gulfstream G700/G800</h3>
-                        <p>Advanced training materials for premium business jets.</p>
-                        <span class="badge-example">Example aircraft</span>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -896,6 +926,10 @@
             
             <div class="swiper gallery-swiper" data-aos="fade-up">
                 <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="assets/images/slide-1.jpg" alt="Aviation Gallery 1"></div>
+                    <div class="swiper-slide"><img src="assets/images/slide-2.jpg" alt="Aviation Gallery 2"></div>
+                    <div class="swiper-slide"><img src="assets/images/slide-3.jpg" alt="Aviation Gallery 3"></div>
+                    <div class="swiper-slide"><img src="assets/images/slide-4.jpg" alt="Aviation Gallery 4"></div>
                     <div class="swiper-slide"><img src="assets/images/boeing-737.png" alt="Boeing 737NG"></div>
                     <div class="swiper-slide"><img src="assets/images/body2.jpg" alt="Airbus A320"></div>
                     <div class="swiper-slide"><img src="assets/images/body3.jpg" alt="Robinson R44"></div>
@@ -991,7 +1025,52 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        // Initialize AOS
         AOS.init({ duration: 800, once: true, offset: 100 });
+
+        // Initialize Hero Swiper
+        const heroSwiper = new Swiper('.hero-swiper', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // Initialize Gallery Swiper
+        new Swiper('.gallery-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+            }
+        });
 
         // Custom Cursor
         const cursorDot = document.querySelector('.cursor-dot');
@@ -1073,17 +1152,6 @@
                     link.classList.add('active');
                 }
             });
-        });
-
-        // Swiper Gallery
-        new Swiper('.gallery-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            autoplay: { delay: 4000, disableOnInteraction: false },
-            pagination: { el: '.swiper-pagination', clickable: true },
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-            breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
         });
     </script>
 </body>
