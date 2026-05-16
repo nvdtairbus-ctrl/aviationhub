@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>AviationHub | World-Class Aviation Training & EASA Part-66 Resources</title>
-    <meta name="description" content="Premium EASA Part-66 question banks, aircraft maintenance manuals (CMM), and aviation training resources for Boeing 737NG, Airbus A320, Gulfstream, Robinson helicopters.">
-    <meta name="keywords" content="aviation training, EASA Part-66, aircraft maintenance, Boeing 737NG, Airbus A320, CMM, question bank, Gulfstream G700, Robinson R44">
+    <meta name="description" content="Premium EASA Part-66 question banks, aircraft maintenance manuals (CMM), and aviation training resources for all aircraft types: Boeing, Airbus, Gulfstream, Robinson, Embraer, and more.">
+    <meta name="keywords" content="aviation training, EASA Part-66, aircraft maintenance, Boeing 737NG, Airbus A320, CMM, question bank, Gulfstream G700, Robinson R44, Embraer">
     <meta name="author" content="AviationHub">
     
-    <!-- Favicon / Tab Logo -->
-    <link rel="icon" type="image/png" href="assets/images/logo.png">
-    <link rel="shortcut icon" type="image/png" href="assets/images/logo.png">
+    <!-- Favicon - A with white, H with navy -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%230a2e5c'/><text x='50' y='68' font-size='40' text-anchor='middle' fill='white' font-weight='bold'>A</text><text x='50' y='68' font-size='40' text-anchor='middle' fill='%230a2e5c' font-weight='bold' dx='25'>H</text></svg>">
+    <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%230a2e5c'/><text x='50' y='68' font-size='40' text-anchor='middle' fill='white' font-weight='bold'>A</text><text x='50' y='68' font-size='40' text-anchor='middle' fill='%230a2e5c' font-weight='bold' dx='25'>H</text></svg>">
     
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,7 +21,7 @@
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Swiper.js for carousel -->
+    <!-- Swiper.js -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     
     <style>
@@ -31,11 +31,25 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #0a2e5c;
+            --primary-dark: #051a36;
+            --primary-light: #1a4a8a;
+            --accent: #00bcd4;
+            --accent-dark: #0097a7;
+            --gray-light: #f8f9fa;
+            --gray: #e9ecef;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
+            --shadow-md: 0 5px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
         body {
             font-family: 'Space Grotesk', sans-serif;
             line-height: 1.6;
             color: #1a1a2e;
-            background: #ffffff;
+            background: var(--white);
             overflow-x: hidden;
         }
 
@@ -43,7 +57,7 @@
         .cursor-dot {
             width: 8px;
             height: 8px;
-            background: #ffd700;
+            background: var(--accent);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
@@ -54,7 +68,7 @@
         .cursor-outline {
             width: 40px;
             height: 40px;
-            border: 2px solid rgba(255,215,0,0.5);
+            border: 2px solid rgba(0,188,212,0.5);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
@@ -63,16 +77,9 @@
         }
 
         /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #ffd700;
-            border-radius: 4px;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--gray); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
 
         /* Navigation */
         .navbar {
@@ -86,10 +93,10 @@
         }
         
         .navbar.scrolled {
-            background: rgba(10, 37, 64, 0.98);
+            background: rgba(10, 46, 92, 0.98);
             backdrop-filter: blur(15px);
             padding: 0.7rem 2rem;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-lg);
         }
         
         .nav-container {
@@ -106,14 +113,17 @@
             gap: 10px;
         }
         
-        .logo img {
-            height: 45px;
-            width: auto;
-            transition: all 0.3s;
-        }
-        
-        .navbar.scrolled .logo img {
-            height: 38px;
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--primary);
         }
         
         .logo-text {
@@ -124,7 +134,7 @@
         }
         
         .logo-text span {
-            color: #00bcd4;
+            color: var(--accent);
         }
         
         .nav-menu {
@@ -148,7 +158,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #00bcd4;
+            background: var(--accent);
             transition: width 0.3s;
         }
         
@@ -158,16 +168,14 @@
         }
         
         .nav-btn {
-            background: linear-gradient(135deg, #00bcd4, #0097a7);
+            background: var(--accent);
             padding: 0.5rem 1.2rem;
             border-radius: 50px;
-            color: white !important;
+            color: var(--primary) !important;
             font-weight: 600 !important;
         }
         
-        .nav-btn::after {
-            display: none;
-        }
+        .nav-btn::after { display: none; }
         
         .menu-toggle {
             display: none;
@@ -250,14 +258,14 @@
         }
         
         .hero h1 {
-            font-size: 4.5rem;
+            font-size: 4rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
             line-height: 1.2;
         }
         
         .gradient-text {
-            background: linear-gradient(135deg, #00bcd4, #0097a7);
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -273,7 +281,7 @@
         .stats-grid {
             display: flex;
             justify-content: center;
-            gap: 4rem;
+            gap: 3rem;
             margin: 2rem 0;
             flex-wrap: wrap;
         }
@@ -290,12 +298,7 @@
         .stat-number {
             font-size: 2.5rem;
             font-weight: 800;
-            color: #00bcd4;
-        }
-        
-        .stat-label {
-            font-size: 0.85rem;
-            opacity: 0.9;
+            color: var(--accent);
         }
         
         /* Contact Card */
@@ -318,9 +321,7 @@
             gap: 0.8rem;
         }
         
-        .contact-info-item i {
-            color: #00bcd4;
-        }
+        .contact-info-item i { color: var(--accent); }
         
         .whatsapp-btn {
             display: inline-flex;
@@ -342,27 +343,21 @@
         }
         
         /* Sections */
-        section {
-            padding: 6rem 2rem;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+        section { padding: 6rem 2rem; }
+        .container { max-width: 1400px; margin: 0 auto; }
         
         .section-title {
             text-align: center;
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: #0a2540;
+            color: var(--primary);
         }
         
         .section-subtitle {
             text-align: center;
             color: #666;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 3rem;
         }
         
@@ -374,12 +369,12 @@
         }
         
         .service-card {
-            background: white;
+            background: var(--white);
             border-radius: 20px;
             padding: 2rem;
             text-align: center;
             transition: all 0.4s;
-            border: 1px solid #e9ecef;
+            border: 1px solid var(--gray);
             position: relative;
             overflow: hidden;
         }
@@ -391,24 +386,18 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #00bcd4, #0097a7);
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
             transform: scaleX(0);
             transition: transform 0.4s;
         }
         
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
         
         .service-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #0a2540, #1a4a7a);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -416,9 +405,35 @@
             margin: 0 auto 1.5rem;
         }
         
-        .service-icon i {
-            font-size: 2rem;
-            color: #00bcd4;
+        .service-icon i { font-size: 2rem; color: var(--accent); }
+        
+        /* Aircraft Coverage Banner */
+        .coverage-banner {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+            margin: 3rem 0;
+        }
+        
+        .coverage-banner h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+        .coverage-banner p { opacity: 0.9; max-width: 800px; margin: 0 auto; }
+        
+        .aircraft-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .aircraft-tag {
+            background: rgba(255,255,255,0.15);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
         }
         
         /* Aircraft Grid */
@@ -429,16 +444,16 @@
         }
         
         .aircraft-card {
-            background: white;
+            background: var(--white);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: var(--shadow-md);
             transition: all 0.4s;
         }
         
         .aircraft-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            box-shadow: var(--shadow-lg);
         }
         
         .aircraft-image {
@@ -454,12 +469,18 @@
             transition: transform 0.5s;
         }
         
-        .aircraft-card:hover .aircraft-image img {
-            transform: scale(1.1);
-        }
+        .aircraft-card:hover .aircraft-image img { transform: scale(1.1); }
         
-        .aircraft-info {
-            padding: 1.8rem;
+        .aircraft-info { padding: 1.8rem; }
+        
+        .badge-example {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            margin-top: 0.5rem;
         }
         
         .btn {
@@ -467,7 +488,7 @@
             align-items: center;
             gap: 8px;
             padding: 0.8rem 1.8rem;
-            background: linear-gradient(135deg, #0a2540, #1a4a7a);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
             text-decoration: none;
             border-radius: 50px;
@@ -477,19 +498,17 @@
         
         .btn-outline {
             background: transparent;
-            border: 2px solid #0a2540;
-            color: #0a2540;
+            border: 2px solid var(--primary);
+            color: var(--primary);
         }
         
         .btn-outline:hover {
-            background: #0a2540;
+            background: var(--primary);
             color: white;
         }
         
-        /* Gallery Section */
-        .gallery {
-            background: #f8f9fa;
-        }
+        /* Gallery */
+        .gallery { background: var(--gray-light); }
         
         .swiper {
             width: 100%;
@@ -500,7 +519,7 @@
             text-align: center;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-md);
         }
         
         .swiper-slide img {
@@ -509,29 +528,25 @@
             object-fit: cover;
         }
         
-        .swiper-pagination-bullet-active {
-            background: #00bcd4 !important;
-        }
+        .swiper-pagination-bullet-active { background: var(--accent) !important; }
         
         /* Testimonials */
-        .testimonials {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-        }
+        .testimonials { background: linear-gradient(135deg, var(--gray-light), var(--gray)); }
         
         .testimonial-card {
-            background: white;
+            background: var(--white);
             border-radius: 30px;
             padding: 2.5rem;
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-lg);
         }
         
         .testimonial-avatar {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #0a2540, #1a4a7a);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -539,19 +554,12 @@
             margin: 0 auto 1rem;
         }
         
-        .testimonial-avatar i {
-            font-size: 2.5rem;
-            color: #00bcd4;
-        }
-        
-        .stars {
-            color: #ffd700;
-            margin-bottom: 1rem;
-        }
+        .testimonial-avatar i { font-size: 2.5rem; color: var(--accent); }
+        .stars { color: #ffd700; margin-bottom: 1rem; }
         
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, #0a2540, #1a4a7a);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
             text-align: center;
             position: relative;
@@ -565,18 +573,12 @@
             flex-wrap: wrap;
         }
         
-        .btn-whatsapp {
-            background: #25D366;
-        }
-        
-        .btn-white {
-            background: white;
-            color: #0a2540;
-        }
+        .btn-whatsapp { background: #25D366; }
+        .btn-white { background: white; color: var(--primary); }
         
         /* Footer */
         .footer {
-            background: #0a2540;
+            background: var(--primary-dark);
             color: white;
             padding: 4rem 2rem 2rem;
         }
@@ -589,29 +591,11 @@
             margin: 0 auto;
         }
         
-        .footer-col h4 {
-            margin-bottom: 1rem;
-            color: #00bcd4;
-        }
-        
-        .footer-col ul {
-            list-style: none;
-        }
-        
-        .footer-col ul li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-col a {
-            color: white;
-            text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-        
-        .footer-col a:hover {
-            opacity: 1;
-        }
+        .footer-col h4 { margin-bottom: 1rem; color: var(--accent); }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.5rem; }
+        .footer-col a { color: white; text-decoration: none; opacity: 0.8; transition: opacity 0.3s; }
+        .footer-col a:hover { opacity: 1; }
         
         .social-links {
             display: flex;
@@ -631,13 +615,11 @@
         }
         
         .social-links a:hover {
-            background: #00bcd4;
+            background: var(--accent);
             transform: translateY(-3px);
         }
         
-        .social-links a:hover i {
-            color: #0a2540;
-        }
+        .social-links a:hover i { color: var(--primary); }
         
         .footer-bottom {
             text-align: center;
@@ -653,7 +635,7 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background: #00bcd4;
+            background: var(--accent);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -663,7 +645,7 @@
             visibility: hidden;
             transition: all 0.3s;
             z-index: 99;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow-md);
         }
         
         .scroll-top.show {
@@ -673,83 +655,40 @@
         
         .scroll-top:hover {
             transform: translateY(-5px);
-            background: #0097a7;
+            background: var(--accent-dark);
         }
         
-        .scroll-top i {
-            color: white;
-            font-size: 1.2rem;
-        }
+        .scroll-top i { color: white; font-size: 1.2rem; }
         
         /* Responsive */
-        @media (max-width: 1200px) {
-            .floating-airplane {
-                display: none;
-            }
-        }
+        @media (max-width: 1200px) { .floating-airplane { display: none; } }
         
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            
+            .menu-toggle { display: block; }
             .nav-menu {
                 display: none;
                 width: 100%;
                 flex-direction: column;
                 text-align: center;
                 padding: 1rem 0;
-                background: #0a2540;
+                background: var(--primary);
             }
-            
-            .nav-menu.active {
-                display: flex;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .stats-grid {
-                gap: 1rem;
-            }
-            
-            .stat-item {
-                padding: 0.5rem 1rem;
-            }
-            
-            .stat-number {
-                font-size: 1.5rem;
-            }
-            
-            .contact-card {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            section {
-                padding: 3rem 1rem;
-            }
+            .nav-menu.active { display: flex; }
+            .hero h1 { font-size: 2rem; }
+            .section-title { font-size: 2rem; }
+            .stats-grid { gap: 1rem; }
+            .stat-item { padding: 0.5rem 1rem; }
+            .stat-number { font-size: 1.5rem; }
+            .contact-card { flex-direction: column; gap: 0.5rem; }
+            section { padding: 3rem 1rem; }
         }
         
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .fade-in {
-            animation: fadeInUp 0.6s ease-out;
-        }
+        .fade-in { animation: fadeInUp 0.6s ease-out; }
     </style>
 </head>
 <body>
@@ -767,7 +706,7 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="assets/images/logo.png" alt="AviationHub Logo">
+                <div class="logo-icon">AH</div>
                 <span class="logo-text">AVIATION<span>HUB</span></span>
             </div>
             <div class="menu-toggle" id="menu-toggle">
@@ -809,15 +748,15 @@
             <div class="stats-grid" data-aos="fade-up" data-aos-delay="200">
                 <div class="stat-item">
                     <div class="stat-number">50,000+</div>
-                    <div class="stat-label">Questions Bank</div>
+                    <div>Questions Bank</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">20+</div>
-                    <div class="stat-label">Aircraft Types</div>
+                    <div class="stat-number">All Types</div>
+                    <div>Aircraft & Helicopters</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">100%</div>
-                    <div class="stat-label">Pass Rate</div>
+                    <div>Pass Rate</div>
                 </div>
             </div>
 
@@ -846,42 +785,62 @@
             
             <div class="services-grid">
                 <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
+                    <div class="service-icon"><i class="fas fa-database"></i></div>
                     <h3>Exclusive Question Banks</h3>
-                    <p>50,000+ EASA Part-66 questions with detailed answers and references. Updated regularly.</p>
+                    <p>50,000+ EASA Part-66 questions with detailed answers and references covering all aircraft systems.</p>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
+                    <div class="service-icon"><i class="fas fa-book"></i></div>
                     <h3>Complete CMM Libraries</h3>
-                    <p>Component Maintenance Manuals for Boeing, Airbus, Gulfstream. Organized by ATA chapters.</p>
+                    <p>Component Maintenance Manuals for all major aircraft manufacturers. Organized by ATA chapters.</p>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon">
-                        <i class="fas fa-chalkboard-user"></i>
-                    </div>
+                    <div class="service-icon"><i class="fas fa-chalkboard-user"></i></div>
                     <h3>Interactive Training</h3>
-                    <p>Step-by-step guides and CBTs for Boeing 737NG, Airbus A320, and Robinson R44.</p>
+                    <p>Step-by-step guides and CBTs for all aircraft types from small helicopters to large jets.</p>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
+                    <div class="service-icon"><i class="fab fa-whatsapp"></i></div>
                     <h3>Instant Delivery</h3>
-                    <p>Get your materials immediately via WhatsApp. 24/7 support for all your needs.</p>
+                    <p>Get your materials immediately via WhatsApp. 24/7 support for all your aviation needs.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Aircraft Section -->
-    <section id="aircraft" style="background: #f8f9fa;">
+    <!-- Aircraft Coverage Banner -->
+    <section style="padding: 0 2rem;">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Aircraft Coverage</h2>
-            <p class="section-subtitle" data-aos="fade-up">Comprehensive resources for the world's most popular aircraft</p>
+            <div class="coverage-banner" data-aos="fade-up">
+                <i class="fas fa-globe-americas" style="font-size: 3rem; margin-bottom: 1rem; display: inline-block;"></i>
+                <h3>Complete Aircraft Coverage</h3>
+                <p>We provide training materials and documentation for ALL aircraft types - commercial jets, business jets, regional aircraft, and helicopters from every major manufacturer worldwide.</p>
+                <div class="aircraft-tags">
+                    <span class="aircraft-tag">Boeing (All series)</span>
+                    <span class="aircraft-tag">Airbus (All series)</span>
+                    <span class="aircraft-tag">Gulfstream</span>
+                    <span class="aircraft-tag">Bombardier</span>
+                    <span class="aircraft-tag">Embraer</span>
+                    <span class="aircraft-tag">ATR</span>
+                    <span class="aircraft-tag">Robinson</span>
+                    <span class="aircraft-tag">Bell</span>
+                    <span class="aircraft-tag">Airbus Helicopters</span>
+                    <span class="aircraft-tag">Sikorsky</span>
+                    <span class="aircraft-tag">Leonardo</span>
+                    <span class="aircraft-tag">Cessna</span>
+                    <span class="aircraft-tag">Piper</span>
+                    <span class="aircraft-tag">Beechcraft</span>
+                    <span class="aircraft-tag">Dassault</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aircraft Section - Examples -->
+    <section id="aircraft" style="background: var(--gray-light);">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Popular Aircraft Examples</h2>
+            <p class="section-subtitle" data-aos="fade-up">Here are just a few examples from our extensive library. We cover ALL aircraft types!</p>
             
             <div class="aircraft-grid">
                 <div class="aircraft-card" data-aos="fade-up" data-aos-delay="100">
@@ -891,7 +850,7 @@
                     <div class="aircraft-info">
                         <h3>Boeing 737NG</h3>
                         <p>Complete DFCS, Autopilot, Flight Controls systems. 5000+ MCQs with references.</p>
-                        <a href="samples.html" class="btn btn-outline">View Samples →</a>
+                        <span class="badge-example">Example aircraft</span>
                     </div>
                 </div>
                 <div class="aircraft-card" data-aos="fade-up" data-aos-delay="200">
@@ -901,7 +860,7 @@
                     <div class="aircraft-info">
                         <h3>Airbus A320 Family</h3>
                         <p>EGPWS, ISIS, TCAS, ADF systems. Comprehensive materials for A318-A321.</p>
-                        <a href="samples.html" class="btn btn-outline">View Samples →</a>
+                        <span class="badge-example">Example aircraft</span>
                     </div>
                 </div>
                 <div class="aircraft-card" data-aos="fade-up" data-aos-delay="300">
@@ -911,7 +870,7 @@
                     <div class="aircraft-info">
                         <h3>Robinson R44</h3>
                         <p>Full maintenance manuals, torque specs, MPI, FPI procedures, and CMMs.</p>
-                        <a href="samples.html" class="btn btn-outline">View Samples →</a>
+                        <span class="badge-example">Example aircraft</span>
                     </div>
                 </div>
                 <div class="aircraft-card" data-aos="fade-up" data-aos-delay="400">
@@ -920,15 +879,15 @@
                     </div>
                     <div class="aircraft-info">
                         <h3>Gulfstream G700/G800</h3>
-                        <p>Advanced training materials for premium business jets. Maintenance and operations.</p>
-                        <a href="samples.html" class="btn btn-outline">View Samples →</a>
+                        <p>Advanced training materials for premium business jets.</p>
+                        <span class="badge-example">Example aircraft</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section with Swiper -->
+    <!-- Gallery Section -->
     <section id="gallery" class="gallery">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Our Gallery</h2>
@@ -936,24 +895,12 @@
             
             <div class="swiper gallery-swiper" data-aos="fade-up">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="assets/images/boeing-737.png" alt="Boeing 737NG">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="assets/images/body2.jpg" alt="Airbus A320">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="assets/images/body3.jpg" alt="Robinson R44">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="assets/images/body4.jpg" alt="Gulfstream G700">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="assets/images/body5.jpg" alt="Embraer 145">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="assets/images/hero-bg.jpg" alt="Aviation Background">
-                    </div>
+                    <div class="swiper-slide"><img src="assets/images/boeing-737.png" alt="Boeing 737NG"></div>
+                    <div class="swiper-slide"><img src="assets/images/body2.jpg" alt="Airbus A320"></div>
+                    <div class="swiper-slide"><img src="assets/images/body3.jpg" alt="Robinson R44"></div>
+                    <div class="swiper-slide"><img src="assets/images/body4.jpg" alt="Gulfstream G700"></div>
+                    <div class="swiper-slide"><img src="assets/images/body5.jpg" alt="Embraer 145"></div>
+                    <div class="swiper-slide"><img src="assets/images/hero-bg.jpg" alt="Aviation Background"></div>
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-next"></div>
@@ -975,8 +922,8 @@
                 <div class="stars">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
-                <p style="font-size: 1.1rem; margin-bottom: 1rem;">"As an aviation professional preparing for my EASA Part-66 certification, I found the comprehensive question banks for Boeing 737NG, Airbus A320, and Robinson helicopters to be an invaluable asset. The accompanying maintenance books provided detailed, well-structured content that significantly enhanced my study process. Exceptional service and quality!"</p>
-                <p class="testimonial-name" style="font-weight: 700; color: #0a2540;">— Michael Rodriguez</p>
+                <p style="font-size: 1.1rem; margin-bottom: 1rem;">"As an aviation professional preparing for my EASA Part-66 certification, I found the comprehensive question banks covering all aircraft types to be an invaluable asset. The accompanying maintenance books provided detailed, well-structured content that significantly enhanced my study process. Exceptional service and quality!"</p>
+                <p class="testimonial-name" style="font-weight: 700; color: var(--primary);">— Michael Rodriguez</p>
                 <p style="color: #666;">Certified Aviation Technician, United Kingdom</p>
             </div>
         </div>
@@ -1001,7 +948,7 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <h4>AVIATIONHUB</h4>
-                <p>Premium aviation training resources for EASA Part-66, maintenance manuals, and question banks.</p>
+                <p>Premium aviation training resources for EASA Part-66, maintenance manuals, and question banks covering ALL aircraft types worldwide.</p>
                 <div class="social-links">
                     <a href="https://wa.me/+447765415524" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -1013,19 +960,19 @@
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#aircraft">Aircraft Types</a></li>
+                    <li><a href="#aircraft">Aircraft Coverage</a></li>
                     <li><a href="#gallery">Gallery</a></li>
                     <li><a href="samples.html">Free Samples</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Aircraft Covered</h4>
+                <h4>Coverage Includes</h4>
                 <ul>
-                    <li>Boeing 737NG</li>
-                    <li>Airbus A320</li>
-                    <li>Robinson R44</li>
-                    <li>Gulfstream G700/G800</li>
-                    <li>Embraer 145</li>
+                    <li>All Commercial Jets</li>
+                    <li>All Business Jets</li>
+                    <li>All Regional Aircraft</li>
+                    <li>All Helicopters</li>
+                    <li>All General Aviation</li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1036,14 +983,13 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 AviationHub. All rights reserved. | EASA Part-66 Approved Training Materials</p>
+            <p>&copy; 2026 AviationHub. All rights reserved. | EASA Part-66 Approved Training Materials | Covering ALL Aircraft Types Worldwide</p>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Initialize AOS
         AOS.init({ duration: 800, once: true, offset: 100 });
 
         // Custom Cursor
@@ -1079,7 +1025,6 @@
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             const scrollTop = document.getElementById('scrollTop');
-            
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
                 scrollTop.classList.add('show');
@@ -1121,7 +1066,6 @@
                     current = section.getAttribute('id');
                 }
             });
-            
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
@@ -1130,27 +1074,15 @@
             });
         });
 
-        // Initialize Swiper Gallery
+        // Swiper Gallery
         new Swiper('.gallery-swiper', {
             slidesPerView: 1,
             spaceBetween: 20,
             loop: true,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                640: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
-            }
+            autoplay: { delay: 4000, disableOnInteraction: false },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
         });
     </script>
 </body>
