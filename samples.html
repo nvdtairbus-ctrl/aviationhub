@@ -8,8 +8,14 @@
     <meta name="author" content="AviationPub" />
     <link rel="canonical" href="https://aviationpub.shop/samples.html" />
     
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable" />
+    
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='15' y='25' width='70' height='50' rx='8' fill='%23ffd700'/%3E%3Ctext x='38' y='65' font-family='Arial' font-size='42' font-weight='800' fill='%230a2e5c' text-anchor='middle'%3EA%3C/text%3E%3Ctext x='64' y='65' font-family='Arial' font-size='42' font-weight='800' fill='%230a2e5c' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E" />
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
@@ -40,6 +46,9 @@
             line-height: 1.6;
         }
 
+        /* ============================================
+                   NAVBAR
+                ============================================ */
         .navbar {
             background: var(--primary);
             padding: 1rem 2rem;
@@ -442,6 +451,30 @@
                     icon.className = content.classList.contains('active') ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
                 }
             });
+        });
+
+        // Lazy loading for images with Intersection Observer
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            if (img.dataset.src) {
+                                img.src = img.dataset.src;
+                                img.removeAttribute('data-src');
+                            }
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                }, {
+                    rootMargin: '100px 0px'
+                });
+                
+                lazyImages.forEach(img => imageObserver.observe(img));
+            }
         });
     </script>
 </body>
