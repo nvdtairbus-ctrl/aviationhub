@@ -1,43 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Samples | AviationHub - EASA Part-66 Resources</title>
-    <meta name="description" content="Free sample EASA Part-66 questions and maintenance manuals for Boeing 737NG, Airbus A320, Robinson R44 and more.">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Samples | AviationPub - EASA Part-66 Resources</title>
+    <meta name="description" content="Free sample EASA Part-66 questions and maintenance manuals for Boeing 737NG, Airbus A320, Robinson R44 and more." />
+    <meta name="author" content="AviationPub">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/logo.png">
-    <link rel="shortcut icon" type="image/png" href="assets/images/logo.png">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='15' y='25' width='70' height='50' rx='8' fill='%23ffd700'/%3E%3Ctext x='38' y='65' font-family='Arial' font-size='42' font-weight='800' fill='%230a2e5c' text-anchor='middle'%3EA%3C/text%3E%3Ctext x='64' y='65' font-family='Arial' font-size='42' font-weight='800' fill='%230a2e5c' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --primary: #0a2e5c;
             --primary-dark: #051a36;
-            --secondary: #1e88e5;
             --accent: #00bcd4;
         }
-
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            line-height: 1.6;
-            color: #1a1a2e;
+            font-family: 'Inter', sans-serif;
             background: #f5f7fa;
+            color: #1a1a2e;
         }
-
-        /* Navigation */
         .navbar {
             background: var(--primary);
             padding: 1rem 2rem;
@@ -46,7 +36,6 @@
             top: 0;
             z-index: 1000;
         }
-
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -54,52 +43,45 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-
-        .logo img {
+        .logo-icon {
+            width: 40px;
             height: 40px;
-            width: auto;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: var(--primary);
         }
-
         .logo-text {
             font-size: 1.3rem;
             font-weight: 800;
             color: white;
         }
-
-        .logo-text span {
-            color: var(--accent);
-        }
-
+        .logo-text span { color: var(--accent); }
         .nav-menu {
             display: flex;
             gap: 2rem;
             list-style: none;
         }
-
         .nav-menu a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
         }
-
-        .nav-menu a:hover {
-            color: var(--accent);
-        }
-
+        .nav-menu a:hover { color: var(--accent); }
         .menu-toggle {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
             color: white;
         }
-
         .back-btn {
             display: inline-flex;
             align-items: center;
@@ -110,29 +92,18 @@
             border-radius: 50px;
             text-decoration: none;
             margin: 100px 2rem 1rem 2rem;
-            transition: all 0.3s;
+            transition: 0.3s;
         }
-
-        .back-btn:hover {
-            background: var(--accent);
-            transform: translateX(-5px);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
+        .back-btn:hover { background: var(--accent); transform: translateX(-5px); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
         .alert {
-            background: linear-gradient(135deg, #0a2e5c, #1e88e5);
+            background: linear-gradient(135deg, var(--primary), #1a4a8a);
             color: white;
             padding: 1.5rem;
             border-radius: 15px;
             margin-bottom: 2rem;
             text-align: center;
         }
-
         .section-title {
             font-size: 1.8rem;
             margin: 2rem 0 1.5rem;
@@ -140,7 +111,6 @@
             border-left: 4px solid var(--accent);
             padding-left: 1rem;
         }
-
         .accordion {
             background: white;
             border-radius: 12px;
@@ -148,7 +118,6 @@
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-
         .accordion-header {
             background: var(--primary);
             color: white;
@@ -159,28 +128,21 @@
             justify-content: space-between;
             align-items: center;
         }
-
-        .accordion-header:hover {
-            background: var(--accent);
-        }
-
+        .accordion-header:hover { background: var(--accent); }
         .accordion-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
         }
-
         .accordion-content.active {
             max-height: 2000px;
             padding: 1.5rem;
         }
-
         .download-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 0.8rem;
         }
-
         .download-btn {
             display: flex;
             align-items: center;
@@ -190,14 +152,9 @@
             border-radius: 8px;
             text-decoration: none;
             color: var(--primary);
-            transition: all 0.3s;
+            transition: 0.3s;
         }
-
-        .download-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
-
+        .download-btn:hover { background: var(--primary); color: white; }
         .question-card {
             background: #f8f9fa;
             border-radius: 12px;
@@ -205,24 +162,9 @@
             margin-bottom: 1rem;
             border-left: 3px solid var(--accent);
         }
-
-        .question-text {
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: var(--primary);
-        }
-
-        .options {
-            list-style: none;
-            padding-left: 1rem;
-            margin: 0.5rem 0;
-        }
-
-        .options li {
-            margin: 0.4rem 0;
-            font-size: 0.9rem;
-        }
-
+        .question-text { font-weight: 700; margin-bottom: 0.8rem; color: var(--primary); }
+        .options { list-style: none; padding-left: 1rem; margin: 0.5rem 0; }
+        .options li { margin: 0.4rem 0; font-size: 0.9rem; }
         .answer {
             background: #e8f5e9;
             padding: 0.6rem;
@@ -230,13 +172,7 @@
             margin-top: 0.8rem;
             border-left: 3px solid #4caf50;
         }
-
-        .source {
-            font-size: 0.8rem;
-            color: #666;
-            margin-top: 0.5rem;
-        }
-
+        .source { font-size: 0.8rem; color: #666; margin-top: 0.5rem; }
         .footer {
             background: var(--primary-dark);
             color: white;
@@ -244,12 +180,7 @@
             text-align: center;
             margin-top: 3rem;
         }
-
-        .footer a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
+        .footer a { color: var(--accent); text-decoration: none; }
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav-menu {
@@ -258,6 +189,7 @@
                 flex-direction: column;
                 text-align: center;
                 padding: 1rem 0;
+                background: var(--primary);
             }
             .nav-menu.active { display: flex; }
             .container { padding: 1rem; }
@@ -271,8 +203,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="assets/images/logo.png" alt="AviationHub Logo">
-                <span class="logo-text">AVIATION<span>HUB</span></span>
+                <div class="logo-icon">AP</div>
+                <span class="logo-text">AVIATION<span>PUB</span></span>
             </div>
             <div class="menu-toggle" id="menu-toggle">
                 <i class="fas fa-bars"></i>
@@ -280,15 +212,13 @@
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="index.html#services">SERVICES</a></li>
-                <li><a href="index.html#aircraft">AIRCRAFT</a></li>
-                <li><a href="index.html#testimonials">REVIEWS</a></li>
+                <li><a href="index.html#coverage">COVERAGE</a></li>
+                <li><a href="index.html#gallery">GALLERY</a></li>
             </ul>
         </div>
     </nav>
 
-    <a href="index.html" class="back-btn">
-        <i class="fas fa-arrow-left"></i> Back to Home
-    </a>
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
 
     <div class="container">
         <div class="alert">
@@ -301,10 +231,7 @@
 
         <!-- Airbus CMM -->
         <div class="accordion">
-            <div class="accordion-header">
-                <span><i class="fas fa-plane"></i> Airbus A320 / A340 CMMs</span>
-                <i class="fas fa-chevron-down"></i>
-            </div>
+            <div class="accordion-header"><span><i class="fas fa-plane"></i> Airbus A320 / A340 CMMs</span><i class="fas fa-chevron-down"></i></div>
             <div class="accordion-content">
                 <div class="download-grid">
                     <a href="https://jetdocument.com/wp-content/uploads/2025/05/Full-CMM-A310A306A320-Manufacture-JUL.2019.xlsx" class="download-btn" target="_blank"><i class="fas fa-file-excel"></i> A320 Full CMM</a>
@@ -315,10 +242,7 @@
 
         <!-- Vendor CMMs -->
         <div class="accordion">
-            <div class="accordion-header">
-                <span><i class="fas fa-tools"></i> Vendor CMMs (by ATA Chapter)</span>
-                <i class="fas fa-chevron-down"></i>
-            </div>
+            <div class="accordion-header"><span><i class="fas fa-tools"></i> Vendor CMMs (by ATA Chapter)</span><i class="fas fa-chevron-down"></i></div>
             <div class="accordion-content">
                 <div class="download-grid">
                     <a href="https://jetdocument.com/wp-content/uploads/2025/05/Vendor-CMM-CH.-21.xlsx" class="download-btn" target="_blank">CH. 21</a>
@@ -340,10 +264,7 @@
 
         <!-- Boeing & Others -->
         <div class="accordion">
-            <div class="accordion-header">
-                <span><i class="fas fa-chart-line"></i> Boeing &amp; Other CMMs</span>
-                <i class="fas fa-chevron-down"></i>
-            </div>
+            <div class="accordion-header"><span><i class="fas fa-chart-line"></i> Boeing &amp; Other CMMs</span><i class="fas fa-chevron-down"></i></div>
             <div class="accordion-content">
                 <div class="download-grid">
                     <a href="https://jetdocument.com/wp-content/uploads/2025/05/Boeing-CMM.xlsx" class="download-btn" target="_blank"><i class="fas fa-file-excel"></i> Boeing CMM</a>
@@ -357,10 +278,7 @@
 
         <!-- Boeing 737NG -->
         <div class="accordion">
-            <div class="accordion-header">
-                <span><i class="fas fa-plane"></i> Boeing 737NG</span>
-                <i class="fas fa-chevron-down"></i>
-            </div>
+            <div class="accordion-header"><span><i class="fas fa-plane"></i> Boeing 737NG</span><i class="fas fa-chevron-down"></i></div>
             <div class="accordion-content">
                 <div class="question-card">
                     <div class="question-text">Q1: Which failure during an ILS approach causes the autopilot to disengage immediately?</div>
@@ -385,10 +303,7 @@
 
         <!-- Airbus A320 -->
         <div class="accordion">
-            <div class="accordion-header">
-                <span><i class="fas fa-plane"></i> Airbus A320</span>
-                <i class="fas fa-chevron-down"></i>
-            </div>
+            <div class="accordion-header"><span><i class="fas fa-plane"></i> Airbus A320</span><i class="fas fa-chevron-down"></i></div>
             <div class="accordion-content">
                 <div class="question-card">
                     <div class="question-text">Q1: What does the Terrain Clearance Floor (TCF) mode in EGPWS do?</div>
@@ -407,10 +322,7 @@
 
         <!-- Robinson R44 -->
         <div class="accordion">
-            <div class="accordion-header">
-                <span><i class="fas fa-helicopter"></i> Robinson R44 Helicopter</span>
-                <i class="fas fa-chevron-down"></i>
-            </div>
+            <div class="accordion-header"><span><i class="fas fa-helicopter"></i> Robinson R44 Helicopter</span><i class="fas fa-chevron-down"></i></div>
             <div class="accordion-content">
                 <div class="question-card">
                     <div class="question-text">Q1: What care should be taken when cleaning the exterior of an R44 helicopter?</div>
@@ -430,7 +342,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 AviationHub. All rights reserved.</p>
+            <p>&copy; 2026 AviationPub. All rights reserved.</p>
             <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/+447765415524" target="_blank">+44 7765 415524</a></p>
             <p><a href="index.html">← Back to Home</a></p>
         </div>
@@ -439,24 +351,17 @@
     <script>
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
-        if (menuToggle) {
-            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-        }
-
-        const accordionHeaders = document.querySelectorAll('.accordion-header');
-        accordionHeaders.forEach(header => {
+        menuToggle?.addEventListener('click', (e) => { e.stopPropagation(); navMenu.classList.toggle('active'); });
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => navMenu.classList.remove('active'));
+        });
+        document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', function() {
                 const content = this.nextElementSibling;
                 content.classList.toggle('active');
                 const icon = this.querySelector('i:last-child');
                 if (icon) {
-                    if (content.classList.contains('active')) {
-                        icon.classList.remove('fa-chevron-down');
-                        icon.classList.add('fa-chevron-up');
-                    } else {
-                        icon.classList.remove('fa-chevron-up');
-                        icon.classList.add('fa-chevron-down');
-                    }
+                    icon.className = content.classList.contains('active') ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
                 }
             });
         });
